@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="row">
-            @foreach ($books as $book)
+            @forelse ($books as $book)
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="card">
                     <!--<img src="{{ asset('assets/img/unknown_book.png') }}"
@@ -31,7 +31,9 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+            @empty
+            <p>Vacio</p>
+            @endforelse
 
         </div>
     </div>

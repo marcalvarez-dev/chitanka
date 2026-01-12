@@ -11,14 +11,16 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/welcome', [BookController::class, 'index'])->name("books.index");
+Route::get('/welcome', [BookController::class, 'index'])->name('book.index');
 
-Route::get('/catalogo', function () {
+Route::get('/create', [BookController::class, 'create'])->name('book.create');
+
+/* Route::get('/catalogo', function () {
     return view('catalog');
-});
+}); */
 
-Route::get('/suma', [SumaController::class, 'index']);
+/* Route::get('/suma', [SumaController::class, 'index']);
 
-Route::post('/suma', [SumaController::class, 'suma']);
+Route::post('/suma', [SumaController::class, 'suma']); */
 
 //Route::get('/products', [BookController::class, 'index']);
