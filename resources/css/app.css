@@ -1,3 +1,54 @@
+/* Estilos generales */
+:root {
+    --font-primary: "Arvo", sans-serif;
+}
+
 body {
+    font-family: var(--font-primary);
+}
+
+.seccion-oscura {
+    background-color: black;
+    color: white;
+}
+
+/* Navbar */
+.navbar {
+    padding: 2rem;
     background-color: red;
+}
+
+.navbar-collapse {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .row {
+    background-color: yellow;
+}
+
+/* Welcome */
+.hero {
+    border: 1px solid black;
+    background-color: grey;
+    border-radius: 5px;
+    padding: 50px;
+    margin: 20px 0;
+    color: white;
+}
+
+.seccion-content .card {
+    background-color: red;
+    min-height: 250px;
+    margin-bottom: 20px;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
 }
