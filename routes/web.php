@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\SumaController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\EditorialController;
 
 
 Route::get('/', function () {
@@ -13,14 +14,12 @@ Route::get('/', function () {
 
 Route::get('/welcome', [BookController::class, 'index'])->name('book.index');
 
-Route::get('/create', [BookController::class, 'create'])->name('book.create');
+Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
+Route::post('/book/store', [BookController::class, 'store'])->name('book.store');
+Route::get('/book/edit/{book}', [BookController::class, 'edit'])->name('book.edit');
+Route::put('/book/update/{book}', [BookController::class, 'update'])->name('book.update');
+Route::delete('/book/destroy/{book}', [BookController::class, 'destroy'])->name('book.destroy');
 
-/* Route::get('/catalogo', function () {
-    return view('catalog');
-}); */
+Route::get('/book/details/{id}', [BookController::class, 'details'])->name('book.details');
 
-/* Route::get('/suma', [SumaController::class, 'index']);
-
-Route::post('/suma', [SumaController::class, 'suma']); */
-
-//Route::get('/products', [BookController::class, 'index']);
+Route::resource('/editorial', [EditorialController::class]);

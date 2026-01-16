@@ -3,6 +3,9 @@
 @section('title', 'Chitanka | Tu librería online')
 
 @section('content')
+
+@include('layouts._partials.messages')
+
 @if($books->isEmpty())
 <p>No hay libros </p>
 @else
@@ -27,7 +30,14 @@
                         <p class="card-text">Descripcion</p>
                         <p class="card-text">{{$book->genre}}</p>
                         <p class="card-text">{{$book->book_language}}</p>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                        <a href="{{route('book.details', $book->id)}}" class="btn btn-primary">Comprar</a>
+                        <a href="{{route('book.edit', $book->id)}}" class="btn btn-primary">Modificar</a>
+                        <form method="POST" action="{{route('book.destroy', $book->id)}}">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Borrar" />
+                            <!--<a class="btn btn-primary">Eliminar</a>-->
+                        </form>
                     </div>
                 </div>
             </div>
