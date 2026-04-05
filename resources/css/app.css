@@ -52,3 +52,16 @@ body {
     margin-top: 20px;
     padding-top: 20px;
 }
+
+.error {
+    border-color: red;
+}
+
+.social-icons {
+    list-style: none;
+}
+
+.social-icons a {
+    text-decoration: none;
+    color: white;
+}

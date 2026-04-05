@@ -14,6 +14,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbar-toggler">
                 <a class="navbar-brand" href="{{route('book.index')}}"><img src="{{ asset('assets/img/unknown_book.png') }}" width="50" alt="Logo de la página web" /></a>
+
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar por título, autor, género, ISBN" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
                 <ul
                     class="navbar-nav d-flex justify-content-center align-items-center">
                     <li class="nav-item">
@@ -22,6 +27,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/suma">Sumar</a>
                     </li>
+                    <i class="bi bi-cart"></i>
+
                 </ul>
             </div>
         </div>

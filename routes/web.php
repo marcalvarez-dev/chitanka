@@ -17,9 +17,10 @@ Route::get('/welcome', [BookController::class, 'index'])->name('book.index');
 Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
 Route::post('/book/store', [BookController::class, 'store'])->name('book.store');
 Route::get('/book/edit/{book}', [BookController::class, 'edit'])->name('book.edit');
+/** PUT es una variacion del post que indica que vamos a modificar un valor  */
 Route::put('/book/update/{book}', [BookController::class, 'update'])->name('book.update');
 Route::delete('/book/destroy/{book}', [BookController::class, 'destroy'])->name('book.destroy');
 
 Route::get('/book/details/{id}', [BookController::class, 'details'])->name('book.details');
 
-Route::resource('/editorial', [EditorialController::class]);
+//Route::resource('/editorial', [EditorialController::class]);

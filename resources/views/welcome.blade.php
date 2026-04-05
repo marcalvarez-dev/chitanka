@@ -30,7 +30,7 @@
                         <p class="card-text">Descripcion</p>
                         <p class="card-text">{{$book->genre}}</p>
                         <p class="card-text">{{$book->book_language}}</p>
-                        <a href="{{route('book.details', $book->id)}}" class="btn btn-primary">Comprar</a>
+                        <a href="{{route('book.details', $book->id)}}" class="btn btn-primary">Añadir al carrito</a>
                         <a href="{{route('book.edit', $book->id)}}" class="btn btn-primary">Modificar</a>
                         <form method="POST" action="{{route('book.destroy', $book->id)}}">
                             @csrf

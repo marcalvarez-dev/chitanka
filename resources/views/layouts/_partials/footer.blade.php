@@ -14,6 +14,24 @@
                 </div>
                 <div class="col-12 col-md-3">
                     <h5>Contacta con nosotros</h3>
+                        <ul class="social-icons">
+                            <li>
+                                <a href="#"><i class="bi bi-facebook"></i></a>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="bi bi-instagram"></i></a>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="bi bi-pinterest"></i></a>
+                            </li>
+                        </ul>
+
 
                 </div>
                 <div class="col-12 col-md-3">
