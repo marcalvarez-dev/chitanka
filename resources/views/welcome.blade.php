@@ -26,7 +26,7 @@
                      class="card-img-top portada-libro" 
                     alt="Portade del libro">-->
                     <div class="card-body">
-                        <h5 class="card-title">{{$book->title}}</h5>
+                        <h5 class="card-title">{{$book->title}}</a></h5>
                         <p class="card-text">Descripcion</p>
                         <p class="card-text">{{$book->genre}}</p>
                         <p class="card-text">{{$book->book_language}}</p>

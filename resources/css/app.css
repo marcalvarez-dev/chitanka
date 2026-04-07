@@ -23,10 +23,6 @@ body {
     justify-content: space-between;
 }
 
-.navbar .row {
-    background-color: yellow;
-}
-
 /* Welcome */
 .hero {
     border: 1px solid black;

@@ -24,3 +24,20 @@ Route::delete('/book/destroy/{book}', [BookController::class, 'destroy'])->name(
 Route::get('/book/details/{id}', [BookController::class, 'details'])->name('book.details');
 
 //Route::resource('/editorial', [EditorialController::class]);
+
+/* Vistas del footer */
+Route::view('/about', 'static.about')->name('about');
+Route::view('/jobs', 'static.jobs')->name('jobs');
+
+Route::view('/faq', 'static.faq')->name('faq');
+Route::view('/returns', 'static.returns')->name('returns');
+Route::view('/shipping', 'static.shipping')->name('shipping');
+Route::view('/contact', 'static.contact')->name('contact');
+
+Route::view('/terms', 'static.terms')->name('terms');
+Route::view('/privacy', 'static.privacy')->name('privacy');
+Route::view('/cookies', 'static.cookies')->name('cookies');
+Route::view('/legal', 'static.legal')->name('legal');
+
+Route::view('/payment', 'static.payment')->name('payment');
+Route::view('/newsletter', 'static.newsletter')->name('newsletter');
