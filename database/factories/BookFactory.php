@@ -19,7 +19,7 @@ class BookFactory extends Factory
     {
         return [
             'title' => fake()->title(100),
-            'genre' => fake()->text(50),
+            'genre' => fake()->text(10),
             'book_language' => fake()->languageCode(),
         ];
     }

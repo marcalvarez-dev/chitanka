@@ -22,9 +22,9 @@
             @forelse ($books as $book)
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="card">
-                    <!--<img src="{{ asset('assets/img/unknown_book.png') }}"
-                     class="card-img-top portada-libro" 
-                    alt="Portade del libro">-->
+                    <img src="{{ asset('assets/img/cover.jpg') }}"
+                        class="card-img-top portada-libro"
+                        alt="Portade del libro">
                     <div class="card-body">
                         <h5 class="card-title">{{$book->title}}</a></h5>
                         <p class="card-text">Descripcion</p>
