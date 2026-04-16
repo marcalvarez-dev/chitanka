@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Editorial extends Model
 {
@@ -12,9 +11,4 @@ class Editorial extends Model
 
     // protected $fillable = ["name", "direction"];
     protected $guarded = [];
-
-    public function editions(): HasMany
-    {
-        return $this->hasMany(Edition::class);
-    }
 }

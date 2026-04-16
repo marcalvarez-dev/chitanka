@@ -9,16 +9,10 @@
 
 <body>
     <a href="/welcome">Entrar</a>
-    <h1>Libros: </h1>
+    <h1>Direcciones en usuarios</h1>
     <ul>
-        @foreach($authors as $author)
-        <h2>{{ $author->name }}</h2>
-
-        <ul>
-            @foreach($author->books as $book)
-            <li>{{ $book->title }}</li>
-            @endforeach
-        </ul>
+        @foreach($user->addresses as $address)
+        <li>{{$address->country}} {{$address->province}}</li>
         @endforeach
     </ul>
 
