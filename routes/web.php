@@ -1,23 +1,26 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\SumaController;
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\EditorialController;
-use App\Http\Controllers\UserController;
-
-
-/*Route::get('/', function () {
-    return view('login');
+Route::get('/', function () {
+    return view('auth.register');
 });
-*/
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
 
 Route::get('/', [UserController::class, 'index'])->name('index');
-
-
-
 
 Route::get('/welcome', [BookController::class, 'index'])->name('book.index');
 
@@ -45,3 +48,7 @@ Route::view('/cookies', 'static.cookies')->name('cookies');
 Route::view('/legal', 'static.legal')->name('legal');
 Route::view('/payment', 'static.payment')->name('payment');
 Route::view('/newsletter', 'static.newsletter')->name('newsletter');
+
+
+
+require __DIR__ . '/auth.php';
