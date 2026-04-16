@@ -14,7 +14,7 @@ class EditionSeeder extends Seeder
      */
     public function run(): void
     {
-        Edition::create([
+        /*Edition::create([
             'isbn' => 1233567891231,
             'title' => 'tronos',
             'language' => 'spanish',
@@ -52,7 +52,7 @@ class EditionSeeder extends Seeder
             'synopsis' => 'nose',
             'editorial_id' => 1,
             'book_id' => 3
-        ]);
+        ]);*/
 
         DB::table('edition_order')->insert([
             'edition_id' => 1,

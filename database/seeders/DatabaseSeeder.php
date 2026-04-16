@@ -20,8 +20,11 @@ class DatabaseSeeder extends Seeder
             AddressSeeder::class,
             EditorialSeeder::class,
             OrderSeeder::class,
-            EditionSeeder::class
+            EditionSeeder::class,
             AuthorSeeder::class,
-            CategorySeeder::class*/]);
+            CategorySeeder::class*/
+            AuthorSeeder::class,
+            EditionSeeder::class,
+        ]);
     }
 }
