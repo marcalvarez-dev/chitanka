@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('genre', 10);
             $table->string('title', 100);
-            $table->string('book_language', 50);
             $table->timestamps();
         });
     }

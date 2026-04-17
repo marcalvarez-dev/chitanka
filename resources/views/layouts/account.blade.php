@@ -38,6 +38,8 @@
 
 <body>
 
+    @include('layouts._partials.menu')
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-3 bg-light vh-100 p-3">
@@ -56,6 +58,16 @@
 
                     <li class="nav-item">
                         <a href="{{ route('account.orders') }}" class="nav-link">Historial de compra</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <button type="submit">
+                                Logout
+                            </button>
+                        </form>
                     </li>
                 </ul>
             </div>

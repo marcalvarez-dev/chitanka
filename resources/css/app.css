@@ -39,6 +39,11 @@ body {
     margin-bottom: 20px;
 }
 
+/* Details libro */
+.book-cover {
+    max-width: 250px;
+}
+
 /* Footer */
 .footer {
     display: flex;

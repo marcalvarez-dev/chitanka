@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             'id' => 1,
             'name' => 'Marc',
             'last_name' => 'Alvarez',
-            'email' => 'hola@gmail.com',
+            'email' => 'marcalvarezruiz9@gmail.com',
             'password' => Hash::make('12345678'),
             'role' => 'admin',
 
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             'id' => 2,
             'name' => 'Pedro',
             'last_name' => 'Ruiz',
-            'email' => 'adios@gmail.com',
+            'email' => 'hola@gmail.com',
             'password' => Hash::make('12345678'),
             'role' => 'user',
 

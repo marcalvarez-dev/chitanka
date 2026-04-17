@@ -14,6 +14,9 @@ class EditionSeeder extends Seeder
      */
     public function run(): void
     {
+
+        Edition::factory()->count(150)->create();
+
         /*Edition::create([
             'isbn' => 1233567891231,
             'title' => 'tronos',
@@ -54,7 +57,7 @@ class EditionSeeder extends Seeder
             'book_id' => 3
         ]);*/
 
-        DB::table('edition_order')->insert([
+        /* DB::table('edition_order')->insert([
             'edition_id' => 1,
             'order_id' => 1,
             'quantity' => 5,
@@ -73,6 +76,6 @@ class EditionSeeder extends Seeder
             'order_id' => 2,
             'quantity' => 1,
             'unitary_price' => 3.4,
-        ]);
+        ]);*/
     }
 }

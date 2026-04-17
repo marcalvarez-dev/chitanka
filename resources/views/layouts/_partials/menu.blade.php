@@ -13,7 +13,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbar-toggler">
-                <a class="navbar-brand" href="{{route('book.index')}}"><img src="{{ asset('assets/img/logo.png') }}" width="50" alt="Logo de la página web" /></a>
+                <a class="navbar-brand" href="{{route('edition.index')}}"><img src="{{ asset('assets/img/logo.png') }}" width="50" alt="Logo de la página web" /></a>
 
                 <form class="form-inline">
                     <div style="display: flex;">

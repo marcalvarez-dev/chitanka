@@ -14,7 +14,7 @@ class AuthorSeeder extends Seeder
      */
     public function run(): void
     {
-        /* Author::create([
+        Author::create([
             'name' => 'Miguel',
             'last_name' => 'De cervantes'
         ]);
@@ -28,9 +28,9 @@ class AuthorSeeder extends Seeder
         Author::create([
             'name' => 'Homero',
             'last_name' => 'Desconocido'
-        ]);*/
+        ]);
 
-        DB::table('author_book')->insert([
+        /*DB::table('author_book')->insert([
             'author_id' => 1,
             'book_id' => 1,
         ]);
@@ -48,6 +48,6 @@ class AuthorSeeder extends Seeder
         DB::table('author_book')->insert([
             'author_id' => 2,
             'book_id' => 4,
-        ]);
+        ]);*/
     }
 }

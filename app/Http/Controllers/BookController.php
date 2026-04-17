@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Author;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Http\Requests\BookRequest;
@@ -12,19 +13,22 @@ class BookController extends Controller
 
     public function index(): View
     {
-        $books = Book::all();
+        $books = Book::paginate(20);
         return view('welcome', compact('books'));
     }
 
     public function details($id): View
     {
         $book = Book::find($id);
-        return view('books.product', compact('book'));
+        return view('books.details', compact('book'));
     }
 
     public function create(): View
     {
-        return view('books.create');
+
+        $authors = Author::all();
+
+        return view('books.create', compact('authors'));
     }
 
     public function store(BookRequest $request): RedirectResponse

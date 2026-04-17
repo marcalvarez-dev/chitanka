@@ -3,15 +3,16 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\EditionController;
 use App\Http\Controllers\UserController;
 
 //Rutas publicas//
 
 //Home
-Route::get('/', [BookController::class, 'index'])->name('book.index');
+Route::get('/', [EditionController::class, 'index'])->name('edition.index');
 
 //Detalles de libro
-Route::get('/book/details/{id}', [BookController::class, 'details'])->name('book.details');
+Route::get('/edition/details/{id}', [EditionController::class, 'details'])->name('edition.details');
 
 //Footer
 Route::view('/about', 'static.about')->name('about');
@@ -58,11 +59,11 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->group(function () {
 
     // CRUD libros (solo si quieres protegerlos)
-    Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
-    Route::post('/book/store', [BookController::class, 'store'])->name('book.store');
-    Route::get('/book/edit/{book}', [BookController::class, 'edit'])->name('book.edit');
-    Route::put('/book/update/{book}', [BookController::class, 'update'])->name('book.update');
-    Route::delete('/book/delete/{book}', [BookController::class, 'destroy'])->name('book.delete');
+    Route::get('/edition/create', [EditionController::class, 'create'])->name('edition.create');
+    Route::post('/edition/store', [EditionController::class, 'store'])->name('edition.store');
+    Route::get('/edition/edit/{edition}', [EditionController::class, 'edit'])->name('edition.edit');
+    Route::put('/edition/update/{edition}', [EditionController::class, 'update'])->name('edition.update');
+    Route::delete('/edition/delete/{edition}', [EditionController::class, 'destroy'])->name('edition.delete');
 });
 
 //Route::resource('/editorial', [EditorialController::class]);

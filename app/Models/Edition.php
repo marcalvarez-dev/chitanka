@@ -17,4 +17,9 @@ class Edition extends Model
     {
         return $this->belongsTo(Editorial::class);
     }
+
+    public function book(): BelongsTo
+    {
+        return $this->belongsTo(Book::class);
+    }
 }
