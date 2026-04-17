@@ -25,13 +25,23 @@
                 <ul
                     class="navbar-nav d-flex justify-content-center align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/welcome">Inicio</a>
+                        @auth
+                        <a class="nav-link" href="{{route('dashboard')}}">
+                            <p>{{auth()->user()->name}}</p>
+                            <i class="bi bi-person"></i>
+                        </a>
+                        @endauth
+
+                        @guest
+                        <a class="nav-link" href="register">
+                            <i class="bi bi-person"></i>
+                        </a>
+                        @endguest
+
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/suma">Sumar</a>
+                        <i class="bi bi-cart"></i>
                     </li>
-                    <i class="bi bi-cart"></i>
-
                 </ul>
             </div>
         </div>

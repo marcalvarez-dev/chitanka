@@ -1,17 +1,73 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.account')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
+@section('content')
+
+@section('title', 'Administrar usuario')
+
+@section('content')
+<section>
+    <div class="container">
+        <div class="row">
+            <h2>Mi cuenta</h2>
+            {{-- MENSAJE --}}
+            @if (session('status'))
+            <div>
+                {{ session('status') }}
+            </div>
+            @endif
+        </div>
+        <div class="row">
+            <div>
+
+                {{-- INFORMACIÓN PERFIL --}}
+                <div>
+                    <div>Información del perfil</div>
+                    <div>
+
+                        <form method="POST" action="{{ route('profile.update') }}">
+                            @csrf
+                            @method('PATCH')
+
+                            <div>
+                                <label>Nombre</label>
+                                <input type="text" name="name"
+                                    value="{{ old('name', auth()->user()->name) }}">
+                            </div>
+
+                            <div>
+                                <label>Email</label>
+                                <input type="email" name="email"
+                                    value="{{ old('email', auth()->user()->email) }}">
+                            </div>
+
+                            <button>Guardar</button>
+                        </form>
+
+                    </div>
                 </div>
+
+                {{-- BORRAR CUENTA --}}
+                <div>
+                    <div>Eliminar cuenta</div>
+                    <div>
+
+                        <form method="POST" action="{{ route('profile.destroy') }}">
+                            @csrf
+                            @method('DELETE')
+
+                            <button
+                                onclick="return confirm('¿Seguro que quieres borrar la cuenta?')">
+                                Borrar cuenta
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-</x-app-layout>
+</section>
+
+
+@endsection

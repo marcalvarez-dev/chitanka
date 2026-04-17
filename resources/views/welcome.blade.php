@@ -22,22 +22,28 @@
             @forelse ($books as $book)
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="card">
-                    <img src="{{ asset('assets/img/cover.jpg') }}"
-                        class="card-img-top portada-libro"
-                        alt="Portade del libro">
+                    <a href="{{route('book.details', $book->id)}}">
+                        <img src="{{ asset('assets/img/cover.jpg') }}"
+                            class="card-img-top portada-libro"
+                            alt="Portade del libro">
+                    </a>
                     <div class="card-body">
                         <h5 class="card-title">{{$book->title}}</a></h5>
                         <p class="card-text">Descripcion</p>
                         <p class="card-text">{{$book->genre}}</p>
                         <p class="card-text">{{$book->book_language}}</p>
-                        <a href="{{route('book.details', $book->id)}}" class="btn btn-primary">Añadir al carrito</a>
+                        <a href="" class="btn btn-primary">Añadir al carrito</a>
+                        @auth
+                        @if(auth()->user()->role === 'admin')
                         <a href="{{route('book.edit', $book->id)}}" class="btn btn-primary">Modificar</a>
-                        <form method="POST" action="{{route('book.destroy', $book->id)}}">
+                        <form method="POST" action="{{route('book.delete', $book->id)}}">
                             @csrf
                             @method('DELETE')
                             <input type="submit" value="Borrar" />
-                            <!--<a class="btn btn-primary">Eliminar</a>-->
                         </form>
+                        @endif
+                        @endauth
+
                     </div>
                 </div>
             </div>

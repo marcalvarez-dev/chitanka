@@ -37,16 +37,33 @@
 </head>
 
 <body>
-    @include('layouts._partials.menu')
 
-    @yield('content')
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3 bg-light vh-100 p-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a href="{{ route('dashboard') }}" class="nav-link">Mi información</a>
+                    </li>
 
-    @include('layouts._partials.footer')
+                    <li class="nav-item">
+                        <a href="{{ route('account.password') }}" class="nav-link">Contraseña</a>
+                    </li>
 
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+                    <li class="nav-item">
+                        <a href="{{ route('account.orders') }}" class="nav-link">Mis pedidos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('account.orders') }}" class="nav-link">Historial de compra</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-9 p-4">
+                @yield('content')
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
