@@ -30,12 +30,14 @@
                     <div class="card-body">
                         <h5 class="card-title"><a href="{{route('edition.details', $edition->id)}}">{{$edition->title}}</a></h5>
                         <p class="card-text">{{$edition->price}}€</p>
-                        <p class="card-text"> {{ $edition->book->authors->pluck('name')->join(', ') }}</p>
+                        <p class="card-text"> {{$edition->book->authors->pluck('name')->join(', ')}} </p>
+                        <form method="POST" action="{{route('cart.store')}}">
+                            @csrf
 
-                        <p class="card-text">
-                            {{ $edition->book->authors->pluck('name')->join(', ') }}
-                        </p> <a href="#" class="btn btn-primary">Añadir al carrito</a>
-                        @auth
+                            <input type="hidden" name="edition_id" value="{{ $edition->id }}">
+
+                            <button type="submit">Añadir al carrito</button>
+                        </form> @auth
                         @if(auth()->user()->role === 'admin')
                         <a href="{{route('edition.edit', $edition->id)}}" class="btn btn-primary">Modificar</a>
                         <form method="POST" action="{{route('edition.delete', $edition->id)}}">
@@ -51,12 +53,9 @@
             </div>
             @empty
             <p>Vacio</p>
+            $editions->links()
             @endforelse
-            <!--{{ $editions->links() }}-->
-
-
         </div>
-    </div>
     </div>
 </section>
 @endif

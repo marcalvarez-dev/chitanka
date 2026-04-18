@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\EditionController;
 use App\Http\Controllers\UserController;
 
@@ -38,12 +40,23 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    //Perfil
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-Route::middleware('auth')->group(function () {
+    //Cart
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/items', [CartItemController::class, 'store'])->name('cart.store');
+    Route::delete('/cart/items/{id}', [CartItemController::class, 'destroy'])->name('cart.item.delete');
+
+    //Admin
+    //CRUD de las ediciones
+    Route::get('/edition/create', [EditionController::class, 'create'])->name('edition.create');
+    Route::post('/edition/store', [EditionController::class, 'store'])->name('edition.store');
+    Route::get('/edition/edit/{edition}', [EditionController::class, 'edit'])->name('edition.edit');
+    Route::put('/edition/update/{edition}', [EditionController::class, 'update'])->name('edition.update');
+    Route::delete('/edition/delete/{edition}', [EditionController::class, 'destroy'])->name('edition.delete');
 
     Route::get('/dashboard/password', function () {
         return view('account.change-password');
@@ -53,17 +66,3 @@ Route::middleware('auth')->group(function () {
         return view('account.orders');
     })->name('account.orders');
 });
-
-//Rutas de administrador//
-
-Route::middleware(['auth'])->group(function () {
-
-    // CRUD libros (solo si quieres protegerlos)
-    Route::get('/edition/create', [EditionController::class, 'create'])->name('edition.create');
-    Route::post('/edition/store', [EditionController::class, 'store'])->name('edition.store');
-    Route::get('/edition/edit/{edition}', [EditionController::class, 'edit'])->name('edition.edit');
-    Route::put('/edition/update/{edition}', [EditionController::class, 'update'])->name('edition.update');
-    Route::delete('/edition/delete/{edition}', [EditionController::class, 'destroy'])->name('edition.delete');
-});
-
-//Route::resource('/editorial', [EditorialController::class]);

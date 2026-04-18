@@ -40,7 +40,7 @@
 
                     </li>
                     <li class="nav-item">
-                        <i class="bi bi-cart"></i>
+                        <a href="{{route('cart.index')}}"> <i class="bi bi-cart"></i> </a>
                     </li>
                 </ul>
             </div>

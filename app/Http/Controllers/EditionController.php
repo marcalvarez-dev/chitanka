@@ -25,7 +25,7 @@ class EditionController extends Controller
     public function details($id): View
     {
         $edition = Edition::find($id);
-        return view('edition.details', compact('edition'));
+        return view('editions.details', compact('edition'));
     }
 
     /**
