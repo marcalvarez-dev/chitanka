@@ -6,6 +6,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\EditionController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 
 //Rutas publicas//
@@ -15,6 +16,8 @@ Route::get('/', [EditionController::class, 'index'])->name('edition.index');
 
 //Detalles de libro
 Route::get('/edition/details/{id}', [EditionController::class, 'details'])->name('edition.details');
+Route::post('/checkout', [CartController::class], 'checkout')->name('checkout');
+Route::get('/mailme', [MailController::class, 'mailMe'])->name('mailme');
 
 //Footer
 Route::view('/about', 'static.about')->name('about');
