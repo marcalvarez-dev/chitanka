@@ -35,6 +35,13 @@ class RegisteredUserController extends Controller
             'last_name' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'country' => ['required', 'string', 'max:50'],
+            'province' => ['required', 'string', 'max:50'],
+            'city' => ['required', 'string', 'max:50'],
+            'postal_code' => ['required', 'string', 'max:20'],
+            'street' => ['required', 'string', 'max:100'],
+            'number' => ['required', 'string', 'max:10'],
+            'apartment_number' => ['nullable', 'string', 'max:10'],
         ]);
 
         $user = User::create([
@@ -46,10 +53,22 @@ class RegisteredUserController extends Controller
 
         ]);
 
+        //Añado esto a breeze para que cuando me cree el usuario me cree la direccion
+        $user->addresses()->create([
+            'country' => $request->country,
+            'province' => $request->province,
+            'city' => $request->city,
+            'postal_code' => $request->postal_code,
+            'street' => $request->street,
+            'number' => $request->number,
+            'apartment_number' => $request->apartment_number,
+        ]);
+
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        //return redirect(route('dashboard', absolute: false));
+        return redirect()->route('edition.index')->with('succes', 'Cuenta creada correctamente');
     }
 }

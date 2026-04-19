@@ -60,6 +60,11 @@
                         <a href="{{ route('account.orders') }}" class="nav-link">Historial de compra</a>
                     </li>
 
+
+                    <li class="nav-item">
+                        <a href="{{ route('edition.create') }}" class="nav-link">Añadir Edición</a>
+                    </li>
+
                     <li class="nav-item">
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

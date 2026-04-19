@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('cart_items', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('cart_id');
-            $table->unsignedBigInteger('edition_id');
+            $table->unsignedBigInteger('edition_id')->onDelete('cascade');
             $table->integer('quantity');
             $table->decimal('price');
             $table->timestamps();

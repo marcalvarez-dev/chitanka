@@ -29,20 +29,16 @@
     <label>Sinopsis:</label>
     <textarea name="synopsis">{{ $edition->synopsis }}</textarea>
 
-    <label>Editorial ID:</label>
-    <input name="editorial_id" type="number" value="{{ $edition->editorial_id }}" />
-
-    <label>Book ID:</label>
-    <input name="book_id" type="number" value="{{ $edition->book_id }}" />
-
-    <label>Autores:</label>
-
-    @foreach($authors as $author)
-    <div>
-        <input type="checkbox" name="authors[]" value="{{ $author->id }}">
-        {{ $author->name }}
-    </div>
-    @endforeach
+    <label>Editorial:</label>
+    <select name="editorial_id">
+        @foreach($editorials as $editorial)
+        <option
+            value="{{ $editorial->id }}"
+            {{ $edition->editorial_id == $editorial->id ? 'selected' : '' }}>
+            {{ $editorial->name }}
+        </option>
+        @endforeach
+    </select>
 
     <input type="submit" value="Update">
 </form>

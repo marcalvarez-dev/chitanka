@@ -6,7 +6,8 @@
 
 @include('layouts._partials.messages')
 
-@if($editions->isEmpty())
+<!--Editionsbygenre es una collecion de colleciones-->
+@if(empty($editionsByGenre))
 <p>No hay libros </p>
 @else
 <section class="seccion-content">
@@ -18,6 +19,12 @@
                 </div>
             </div>
         </div>
+        @foreach($editionsByGenre as $genre => $editions)
+        <h2>
+            <a href="{{route('edition.genre', $genre)}}">
+                {{$genre}}
+            </a>
+        </h2>
         <div class="row">
             @forelse ($editions as $edition)
             <div class="col-12 col-md-6 col-lg-3">
@@ -51,11 +58,9 @@
                     </div>
                 </div>
             </div>
-            @empty
-            <p>Vacio</p>
-            $editions->links()
-            @endforelse
+            @endforeach
         </div>
+        @endforeach
     </div>
 </section>
 @endif

@@ -7,6 +7,9 @@ use App\Models\Edition;
 use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderCreateMail;
+
 
 
 class CartController extends Controller
@@ -51,6 +54,8 @@ class CartController extends Controller
             return redirect()->back();
         }
 
+        $order = null;
+
         DB::transaction(function () use ($cart) {
 
             $order = Order::create([
@@ -83,7 +88,7 @@ class CartController extends Controller
         });
 
         Mail::to(auth()->user()->email)
-            ->send(new OrderCreatedMail($order));
+            ->send(new OrderCreateMail($order));
 
         return redirect()->route('cart.index')->with('success', 'Pedido realizado');
     }

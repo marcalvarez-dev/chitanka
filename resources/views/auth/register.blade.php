@@ -7,6 +7,8 @@
 
 <h3>Register</h3>
 
+@include('layouts._partials.messages')
+
 <form method="POST" action="{{ route('register') }}">
     @csrf
 
@@ -78,6 +80,104 @@
             name="password_confirmation"
             required
             autocomplete="new-password">
+    </div>
+
+    {{-- Country --}}
+    <div>
+        <label for="country">País</label>
+        <input id="country"
+            type="text"
+            name="country"
+            required
+            autocomplete="new-country">
+
+        @error('country')
+        <div>{{ $message }}</div>
+        @enderror
+    </div>
+
+    {{-- Province --}}
+    <div>
+        <label for="province">Provincia</label>
+        <input id="province"
+            type="text"
+            name="province"
+            required
+            autocomplete="new-province">
+
+        @error('province')
+        <div>{{ $message }}</div>
+        @enderror
+    </div>
+
+    {{-- City --}}
+    <div>
+        <label for="city">Ciudad</label>
+        <input id="city"
+            type="text"
+            name="city"
+            required
+            autocomplete="new-city">
+
+        @error('city')
+        <div>{{ $message }}</div>
+        @enderror
+    </div>
+
+    {{-- Postal Code --}}
+    <div>
+        <label for="postal_code">Código Postal</label>
+        <input id="postal_code"
+            type="text"
+            name="postal_code"
+            required
+            autocomplete="new-postal_code">
+
+        @error('postal_code')
+        <div>{{ $message }}</div>
+        @enderror
+    </div>
+
+    {{-- Street --}}
+    <div>
+        <label for="street">Calle</label>
+        <input id="street"
+            type="text"
+            name="street"
+            required
+            autocomplete="new-street">
+
+        @error('street')
+        <div>{{ $message }}</div>
+        @enderror
+    </div>
+
+    {{-- Door number --}}
+    <div>
+        <label for="number">Puerta</label>
+        <input id="number"
+            type="text"
+            name="number"
+            required
+            autocomplete="new-number">
+
+        @error('number')
+        <div>{{ $message }}</div>
+        @enderror
+    </div>
+
+    {{-- Apartment number --}}
+    <div>
+        <label for="apartment_number">Piso</label>
+        <input id="apartment_number"
+            type="text"
+            name="apartment_number"
+            required
+            autocomplete="new-apartment_number">
+
+        @error('apartment_number')
+        <div>{{ $message }}</div>
+        @enderror
     </div>
 
     {{-- Submit --}}

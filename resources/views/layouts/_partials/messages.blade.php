@@ -4,7 +4,7 @@
 </div>
 @endif
 @if($message = Session::get('danger'))
-<div>
+<div style="background-color: green;" class="container-fluid">
     <p>{{$message}}</p>
 </div>
 @endif

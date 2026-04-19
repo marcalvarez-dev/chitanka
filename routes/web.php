@@ -13,10 +13,12 @@ use App\Http\Controllers\UserController;
 
 //Home
 Route::get('/', [EditionController::class, 'index'])->name('edition.index');
+Route::get('/genre/{genre}', [EditionController::class, 'filterByGenre'])->name('edition.genre');
+
 
 //Detalles de libro
 Route::get('/edition/details/{id}', [EditionController::class, 'details'])->name('edition.details');
-Route::post('/checkout', [CartController::class], 'checkout')->name('checkout');
+Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 Route::get('/mailme', [MailController::class, 'mailMe'])->name('mailme');
 
 //Footer

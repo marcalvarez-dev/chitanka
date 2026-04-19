@@ -10,7 +10,11 @@ $total = 0;
 
 @if($cart && $cart->items->count())
 @foreach($cart->items as $item)
-<p>{{ $item->edition->title }} x {{$item->quantity}}</p>
+@if($item->edition)
+<p>{{ $item->edition->title }} x {{ $item->quantity }}</p>
+@else
+<p>Edición eliminada x {{ $item->quantity }}</p>
+@endif
 <p>{{$item->price * $item->quantity}} €</p>
 @php
 $total += $item->price * $item->quantity;
@@ -28,7 +32,7 @@ $total += $item->price * $item->quantity;
 
 <p>Total: {{$total}}</p>
 
-<form method="post" action="{{route('checkout')}}">
+<form method="post" action="{{route('cart.checkout')}}">
     @csrf
     <button type="submit">Finalizar compra</button>
 </form>

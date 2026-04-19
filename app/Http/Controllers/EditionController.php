@@ -18,8 +18,30 @@ class EditionController extends Controller
      */
     public function index(): View
     {
-        $editions = Edition::paginate(20);
-        return view('welcome', compact('editions'));
+        //Ediciones con sus libros
+        $editions = Edition::with('book')->get();
+
+        //Todos los generos
+        $genres = Book::select('genre')->distinct()->pluck('genre');
+
+        //Array vacio para guardar genereo y sus ediciones
+        $editionsByGenre = [];
+
+        //Recorro todas las ediciones
+        foreach ($editions as $edition) {
+
+            $genre = $edition->book->genre;
+
+            if (!isset($editionsByGenre[$genre])) {
+                $editionsByGenre[$genre] = [];
+            }
+
+            //Meto edicion dentro del grupo
+            $editionsByGenre[$genre][] = $edition;
+        }
+
+        //Envio a la vista un mapa de arrays
+        return view('welcome', compact('editionsByGenre', 'genres'));
     }
 
     public function details($id): View
@@ -27,6 +49,7 @@ class EditionController extends Controller
         $edition = Edition::find($id);
         return view('editions.details', compact('edition'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -47,7 +70,8 @@ class EditionController extends Controller
     public function store(Request $request): RedirectResponse
     {
         if ($request->book_id) {
-            $bookId = $request->book_id;
+            $book = Book::find($request->book_id);
+            $bookId = $book->id;
         } else {
             $book = Book::create([
                 'title' => $request->new_title,
@@ -84,7 +108,12 @@ class EditionController extends Controller
      */
     public function edit(Edition $edition): View
     {
-        return view('editions.edit', compact('edition'));
+        $authors = Author::all();
+        $editorials = Editorial::all();
+        $books = Book::all();
+
+
+        return view('editions.edit', compact('edition', 'authors', 'books', 'editorials'));
     }
 
     /**
@@ -103,5 +132,26 @@ class EditionController extends Controller
     {
         $edition->delete();
         return redirect()->route('edition.index')->with('danger', 'Libro eliminado');
+    }
+
+    public function filterByGenre($genre)
+    {
+        $editions = Edition::with('book')->get();
+
+        $filter = [];
+
+        foreach ($editions as $edition) {
+            if ($edition->book->genre == $genre) {
+                $filter[] = $edition;
+            }
+        }
+
+        $genres = Book::select('genre')->distinct()->pluck('genre');
+
+        $editionsByGenre = [
+            $genre => $filter
+        ];
+
+        return view('welcome', compact('editionsByGenre', 'genres'));
     }
 }
