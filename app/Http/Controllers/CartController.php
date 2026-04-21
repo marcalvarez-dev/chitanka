@@ -44,7 +44,7 @@ class CartController extends Controller
         return redirect()->route('edition.index');
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
         $cart = Cart::with('items.edition')
             ->where('user_id', auth()->id())
@@ -56,11 +56,11 @@ class CartController extends Controller
 
         $order = null;
 
-        DB::transaction(function () use ($cart) {
+        DB::transaction(function () use ($cart, $request) {
 
             $order = Order::create([
                 'user_id' => auth()->id(),
-                'address_id' => auth()->user()->addresses()->first()->id,
+                'address_id' => $request->address_id,
                 'status' => 'pending',
                 'date' => now(),
                 'total_price' => 0,
@@ -91,5 +91,18 @@ class CartController extends Controller
             ->send(new OrderCreateMail($order));
 
         return redirect()->route('cart.index')->with('success', 'Pedido realizado');
+    }
+
+    public function review()
+    {
+        $cart = Cart::with('items.edition')->where('user_id', auth()->id())->first();
+
+        $addresses = auth()->user()->addresses;
+
+        if (!$cart || $cart->items->isEmpty()) {
+            return redirect()->route('cart.index');
+        }
+
+        return view('checkout.index', compact('cart', 'addresses'));
     }
 }

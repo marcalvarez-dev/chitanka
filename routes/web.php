@@ -74,6 +74,7 @@ Route::middleware('auth')->group(function () {
     })->name('history.orders');
 
     Route::get('/account/orders', [HistoryController::class, 'index'])->name('history');
+    Route::post('/checkout/review', [CartController::class, 'review'])->name('checkout.review');
 });
 
 Route::middleware('auth')->prefix('account')->group(function () {

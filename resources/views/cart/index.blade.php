@@ -32,7 +32,7 @@ $total += $item->price * $item->quantity;
 
 <p>Total: {{$total}}</p>
 
-<form method="post" action="{{route('cart.checkout')}}">
+<form method="post" action="{{route('checkout.review')}}">
     @csrf
     <button type="submit">Finalizar compra</button>
 </form>
