@@ -53,11 +53,11 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('account.orders') }}" class="nav-link">Mis pedidos</a>
+                        <a href="{{ route('addresses.index') }}" class="nav-link">Mis direcciones</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('account.orders') }}" class="nav-link">Historial de compra</a>
+                        <a href="{{ route('history') }}" class="nav-link">Historial de compra</a>
                     </li>
 
 

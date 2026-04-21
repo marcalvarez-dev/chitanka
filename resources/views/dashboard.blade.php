@@ -46,6 +46,21 @@
                     </div>
                 </div>
 
+                {{-- INFORMACIÓN DE DIRECCIONES --}}
+                <div>
+                    <div>Tus direcciones</div>
+                    <div>
+
+                        <form method="POST" action="{{ route('profile.update') }}">
+                            @csrf
+                            @method('PATCH')
+
+                            <button>Guardar</button>
+                        </form>
+
+                    </div>
+                </div>
+
                 {{-- BORRAR CUENTA --}}
                 <div>
                     <div>Eliminar cuenta</div>

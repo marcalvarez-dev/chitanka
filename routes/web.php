@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\EditionController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 
@@ -68,6 +70,12 @@ Route::middleware('auth')->group(function () {
     })->name('account.password');
 
     Route::get('/account/orders', function () {
-        return view('account.orders');
-    })->name('account.orders');
+        return view('account.history.index');
+    })->name('history.orders');
+
+    Route::get('/account/orders', [HistoryController::class, 'index'])->name('history');
+});
+
+Route::middleware('auth')->prefix('account')->group(function () {
+    Route::resource('addresses', AddressController::class);
 });

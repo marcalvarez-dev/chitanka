@@ -20,7 +20,7 @@ class CartController extends Controller
             ->where('user_id', auth()->id())
             ->first();
 
-        return view('cart', compact('cart'));
+        return view('cart.index', compact('cart'));
     }
 
     public function add($id)

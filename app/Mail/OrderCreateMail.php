@@ -28,7 +28,7 @@ class OrderCreateMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Order Create Mail',
+            subject: '¡Compra realizada correctamente!',
             from: new Address(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
         );
     }

@@ -15,6 +15,13 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
+        <!--Diccionario-->
+        @if ($errors->has('auth'))
+        <div class="alert alert-danger">
+            {{ $errors->first('auth') }}
+        </div>
+        @endif
+
         {{-- Email --}}
         <div>
             <label for="email">Email</label>
@@ -24,11 +31,8 @@
                 value="{{ old('email') }}"
                 required
                 autofocus
-                autocomplete="username">
-
-            @error('email')
-            <div>{{ $message }}</div>
-            @enderror
+                autocomplete="username"
+                class="form-control @error('email') is-invalid @enderror">
         </div>
 
         {{-- Password --}}
@@ -38,11 +42,8 @@
                 type="password"
                 name="password"
                 required
-                autocomplete="current-password">
-
-            @error('password')
-            <div>{{ $message }}</div>
-            @enderror
+                autocomplete="current-password"
+                class="form-control @error('password') is-invalid @enderror">
         </div>
 
         {{-- Remember --}}

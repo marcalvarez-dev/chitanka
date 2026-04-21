@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
@@ -23,8 +24,8 @@ class Order extends Model
         return $this->BelongsTo(Address::class);
     }
 
-    public function editions()
+    public function editions(): BelongsToMany
     {
-        return $this->belongsToMany(Edition::class);
+        return $this->belongsToMany(Edition::class)->withPivot('quantity', 'unitary_price');
     }
 }

@@ -67,7 +67,7 @@ class EditionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(EditionRequest $request): RedirectResponse
     {
         if ($request->book_id) {
             $book = Book::find($request->book_id);
