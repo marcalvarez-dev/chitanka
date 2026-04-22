@@ -10,6 +10,7 @@ use App\Http\Controllers\EditionController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
+use App\Models\Edition;
 
 //Rutas publicas//
 
@@ -17,11 +18,16 @@ use App\Http\Controllers\UserController;
 Route::get('/', [EditionController::class, 'index'])->name('edition.index');
 Route::get('/genre/{genre}', [EditionController::class, 'filterByGenre'])->name('edition.genre');
 
+//Buscador
+Route::get('/search', [EditionController::class, 'search'])->name('search');
 
 //Detalles de libro
 Route::get('/edition/details/{id}', [EditionController::class, 'details'])->name('edition.details');
-Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+Route::post('/checkout', [CartController::class, 'checkoutForm'])->name('checkout.form');
+Route::get('/checkout', [CartController::class, 'checkoutForm'])->name('checkout.form');
 Route::get('/mailme', [MailController::class, 'mailMe'])->name('mailme');
+Route::post('/checkout/finish', [CartController::class, 'checkout'])->name('checkout.finish');
+
 
 //Footer
 Route::view('/about', 'static.about')->name('about');

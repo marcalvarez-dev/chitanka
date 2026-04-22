@@ -13,15 +13,17 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbar-toggler">
-                <a class="navbar-brand" href="{{route('edition.index')}}"><img src="{{ asset('assets/img/logo.png') }}" width="50" alt="Logo de la página web" /></a>
+                <a class="navbar-brand" href="{{route('edition.index')}}">
+                    <img src="{{ asset('assets/img/logo.png') }}" width="50" alt="Logo de la página web" />
+                </a>
+                <div style="display: flex;">
 
-                <form class="form-inline">
-                    <div style="display: flex;">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Buscar por título, autor, género, ISBN" aria-label="Search">
+                    <form action="{{route('search')}}" method="get" class="d-flex flex-row">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Buscar por título, autor, género, ISBN" aria-label="Search" name="q">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                    </div>
 
-                </form>
+                    </form>
+                </div>
                 <ul
                     class="navbar-nav d-flex justify-content-center align-items-center">
                     <li class="nav-item">

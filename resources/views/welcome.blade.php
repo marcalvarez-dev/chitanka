@@ -7,7 +7,7 @@
 @include('layouts._partials.messages')
 
 <!--Editionsbygenre es una collecion de colleciones-->
-@if(empty($editionsByGenre))
+@if(empty($editionsByGenre) && empty($editions))
 <p>No hay libros </p>
 @else
 <section class="seccion-content">

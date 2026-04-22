@@ -20,7 +20,13 @@ class OrderCreateMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(public $name) {}
+    public function __construct(
+        public $name,
+        public $date,
+        public $address,
+        public $items,
+        public $total
+    ) {}
 
     /**
      * Get the message envelope.
@@ -28,7 +34,7 @@ class OrderCreateMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '¡Compra realizada correctamente!',
+            subject: '¡Gracias por comprar en Chitanka!',
             from: new Address(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
         );
     }

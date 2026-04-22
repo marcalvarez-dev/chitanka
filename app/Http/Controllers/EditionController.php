@@ -154,4 +154,27 @@ class EditionController extends Controller
 
         return view('welcome', compact('editionsByGenre', 'genres'));
     }
+
+    public function search(Request $request)
+    {
+        $q = $request->q;
+
+        $editions = Edition::with('book')
+            ->where('title', 'like', '%' . $q . '%')
+            ->get();
+
+        $editionsByGenre = [];
+
+        foreach ($editions as $edition) {
+            $genre = $edition->book->genre;
+
+            if (!isset($editionsByGenre[$genre])) {
+                $editionsByGenre[$genre] = [];
+            }
+
+            $editionsByGenre[$genre][] = $edition;
+        }
+
+        return view('welcome', compact('editionsByGenre'));
+    }
 }

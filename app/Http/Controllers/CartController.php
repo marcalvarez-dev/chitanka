@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Edition;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Address;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderCreateMail;
@@ -55,9 +56,11 @@ class CartController extends Controller
         }
 
         $order = null;
+        $total = 0;
+        $address = Address::find($request->address_id);
 
-        DB::transaction(function () use ($cart, $request) {
 
+        DB::transaction(function () use ($cart, $request, &$order, &$total) {
             $order = Order::create([
                 'user_id' => auth()->id(),
                 'address_id' => $request->address_id,
@@ -88,7 +91,13 @@ class CartController extends Controller
         });
 
         Mail::to(auth()->user()->email)
-            ->send(new OrderCreateMail($order));
+            ->send(new OrderCreateMail(
+                auth()->user()->name,
+                now(),
+                $address,
+                $cart->items,
+                $total
+            ));
 
         return redirect()->route('cart.index')->with('success', 'Pedido realizado');
     }
@@ -104,5 +113,20 @@ class CartController extends Controller
         }
 
         return view('checkout.index', compact('cart', 'addresses'));
+    }
+
+    public function checkoutForm(Request $request)
+    {
+        $cart = Cart::with('items.edition')->where('user_id', auth()->id())->first();
+
+        $addresses = Address::where('user_id', auth()->id())->get();
+
+        $shipping = $request->shipping_method ?? null;
+
+        return view('checkout.index', [
+            'cart' => $cart,
+            'addresses' => $addresses,
+            'shipping' => $request->shipping_method
+        ]);
     }
 }
