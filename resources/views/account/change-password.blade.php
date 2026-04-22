@@ -4,10 +4,14 @@
 <div>
     <div>Cambiar contraseña</div>
     <div>
-
         <form method="POST" action="{{ route('password.update') }}">
             @csrf
             @method('PUT')
+
+            <div>
+                <label>Contraseña actual</label>
+                <input type="password" name="current_password">
+            </div>
 
             <div>
                 <label>Nueva contraseña</label>

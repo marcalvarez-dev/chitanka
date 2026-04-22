@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Address;
+use Illuminate\View\View;
 
 class AddressController extends Controller
 {
@@ -20,9 +21,9 @@ class AddressController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('account.addresses.create');
     }
 
     /**

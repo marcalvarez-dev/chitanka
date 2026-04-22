@@ -36,7 +36,7 @@
 
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     @include('layouts._partials.menu')
 
@@ -61,9 +61,11 @@
                     </li>
 
 
+                    @if(auth()->user()->role === 'admin')
                     <li class="nav-item">
                         <a href="{{ route('edition.create') }}" class="nav-link">Añadir Edición</a>
                     </li>
+                    @endif
 
                     <li class="nav-item">
                         <form method="POST" action="{{ route('logout') }}">

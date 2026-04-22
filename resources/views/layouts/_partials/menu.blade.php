@@ -1,50 +1,36 @@
 <header>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-light">
-        <div class="container-fluid">
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbar-toggler"
-                aria-controls="navbarTogglerDemo01"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbar-toggler">
-                <a class="navbar-brand" href="{{route('edition.index')}}">
-                    <img src="{{ asset('assets/img/logo.png') }}" width="50" alt="Logo de la página web" />
-                </a>
-                <div style="display: flex;">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand" href="{{ route('edition.index') }}">
+                <img src="{{ asset('assets/img/logo.png') }}" width="40">
+            </a>
+            <form action="{{ route('search') }}"
+                method="GET"
+                class="d-flex flex-grow-1 justify-content-center mx-4">
 
-                    <form action="{{route('search')}}" method="get" class="d-flex flex-row">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Buscar por título, autor, género, ISBN" aria-label="Search" name="q">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-
-                    </form>
+                <div style="max-width: 500px; width: 100%;">
+                    <input type="search"
+                        name="q"
+                        class="form-control"
+                        placeholder="Buscar libro...">
                 </div>
-                <ul
-                    class="navbar-nav d-flex justify-content-center align-items-center">
-                    <li class="nav-item">
-                        @auth
-                        <a class="nav-link" href="{{route('dashboard')}}">
-                            <p>{{auth()->user()->name}}</p>
-                            <i class="bi bi-person"></i>
-                        </a>
-                        @endauth
+            </form>
+            <div class="d-flex align-items-center gap-4">
 
-                        @guest
-                        <a class="nav-link" href="register">
-                            <i class="bi bi-person"></i>
-                        </a>
-                        @endguest
+                <a href="{{ route('dashboard') }}"
+                    class="nav-link d-flex align-items-center gap-2">
 
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{route('cart.index')}}"> <i class="bi bi-cart"></i> </a>
-                    </li>
-                </ul>
+                    <i class="bi bi-person"></i>
+
+                    @auth
+                    <span>{{ auth()->user()->name }}</span>
+                    @endauth
+
+                </a>
+                <a href="{{ route('cart.index') }}"
+                    class="nav-link">
+                    <i class="bi bi-cart"></i>
+                </a>
             </div>
         </div>
     </nav>

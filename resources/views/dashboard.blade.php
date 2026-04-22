@@ -8,18 +8,7 @@
 <section>
     <div class="container">
         <div class="row">
-            <h2>Mi cuenta</h2>
-            {{-- MENSAJE --}}
-            @if (session('status'))
             <div>
-                {{ session('status') }}
-            </div>
-            @endif
-        </div>
-        <div class="row">
-            <div>
-
-                {{-- INFORMACIÓN PERFIL --}}
                 <div>
                     <div>Información del perfil</div>
                     <div>
@@ -45,23 +34,6 @@
 
                     </div>
                 </div>
-
-                {{-- INFORMACIÓN DE DIRECCIONES --}}
-                <div>
-                    <div>Tus direcciones</div>
-                    <div>
-
-                        <form method="POST" action="{{ route('profile.update') }}">
-                            @csrf
-                            @method('PATCH')
-
-                            <button>Guardar</button>
-                        </form>
-
-                    </div>
-                </div>
-
-                {{-- BORRAR CUENTA --}}
                 <div>
                     <div>Eliminar cuenta</div>
                     <div>
@@ -83,6 +55,4 @@
         </div>
     </div>
 </section>
-
-
 @endsection
