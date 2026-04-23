@@ -3,3 +3,6 @@
 @section('title', 'Hola')
 
 @section('content')
+
+
+@endsection

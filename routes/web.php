@@ -65,7 +65,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cart/items', [CartItemController::class, 'store'])->name('cart.store');
     Route::delete('/cart/items/{id}', [CartItemController::class, 'destroy'])->name('cart.item.delete');
 
-    // Checkout final
+    // Checkout 
+    Route::post('/checkout/review', [CartController::class, 'review'])->name('checkout.review');
     Route::post('/checkout/finish', [CartController::class, 'checkout'])->name('checkout.finish');
 
     // Cuenta

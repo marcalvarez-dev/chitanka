@@ -13,7 +13,7 @@ class EditorialSeeder extends Seeder
      */
     public function run(): void
     {
-        Editorial::create([
+        /* Editorial::create([
             'name' => 'penguin',
             'direction' => 'calleradnom'
         ]);
@@ -21,6 +21,23 @@ class EditorialSeeder extends Seeder
         Editorial::create([
             'name' => 'centauro',
             'direction' => 'callerandom2'
-        ]);
+        ]);*/
+
+        $editorials = [
+            ['name' => 'Penguin Random House', 'direction' => 'EE.UU'],
+            ['name' => 'HarperCollins', 'direction' => 'EE.UU'],
+            ['name' => 'Simon & Schuster', 'direction' => 'EE.UU'],
+            ['name' => 'Hachette Livre', 'direction' => 'Francia'],
+            ['name' => 'Macmillan Publishers', 'direction' => 'Reino Unido'],
+            ['name' => 'Planeta', 'direction' => 'España'],
+            ['name' => 'Anaya', 'direction' => 'España'],
+            ['name' => 'Alfaguara', 'direction' => 'España'],
+            ['name' => 'Salamandra', 'direction' => 'España'],
+            ['name' => 'Debolsillo', 'direction' => 'España'],
+        ];
+
+        foreach ($editorials as $editorial) {
+            Editorial::create($editorial);
+        }
     }
 }

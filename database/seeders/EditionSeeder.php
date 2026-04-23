@@ -15,7 +15,7 @@ class EditionSeeder extends Seeder
     public function run(): void
     {
 
-        Edition::factory()->count(150)->create();
+        // Edition::factory()->count(150)->create();
 
         /*Edition::create([
             'isbn' => 1233567891231,
@@ -77,5 +77,38 @@ class EditionSeeder extends Seeder
             'quantity' => 1,
             'unitary_price' => 3.4,
         ]);*/
+
+        $books = \App\Models\Book::all();
+        $editorials = \App\Models\Editorial::pluck('id')->toArray();
+
+        $formats = ['Tapa dura', 'Bolsillo'];
+        $languages = ['Español', 'Inglés'];
+
+        foreach ($books as $book) {
+
+            for ($i = 1; $i <= 2; $i++) {
+
+                \App\Models\Edition::create([
+                    'book_id' => $book->id,
+                    'editorial_id' => $editorials[array_rand($editorials)],
+
+                    'isbn' => fake()->unique()->numerify('#############'),
+
+                    'title' => $book->title . ' - Edición ' . $i,
+
+                    'language' => $languages[array_rand($languages)],
+
+                    'publication_date' => fake()->date(),
+
+                    'price' => rand(10, 35),
+
+                    'stock' => rand(0, 50),
+
+                    'format' => $formats[array_rand($formats)],
+
+                    'synopsis' => fake()->paragraph(3),
+                ]);
+            }
+        }
     }
 }

@@ -1,100 +1,131 @@
-@extends('layouts.app')
+@extends('layouts.account')
 
 @section('content')
-<form method="POST" action="{{route('edition.store')}}">
-    @csrf
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <form method="POST" class="d-flex flex-column gap-3" action="{{route('edition.store')}}">
+                @csrf
 
-    <label>ISBN: </label>
-    <input name="isbn" type="text" class="@error('isbn') danger @enderror" />
-    @error('isbn')
-    <br>
-    <p style="color: red;">{{ $message }}</p>
-    @enderror
+                <div class="row">
+                    <label class="col-12 col-md-2">ISBN: </label>
+                    <input name="isbn" type="text" class="@error('isbn') danger @enderror col-12 col-md-10" />
+                    @error('isbn')
+                    <p style="color: red;">{{ $message }}</p>
+                    @enderror
+                </div>
 
-    <label>Title: </label>
-    <input name="title" type="text" class="@error('title') danger @enderror" />
-    @error('title')
-    <br>
-    <p style="color: red;">{{$message}}</p>
-    @enderror
+                <div class="row">
+                    <label class="col-12 col-md-2">Título: </label>
+                    <input name="title" type="text" class="@error('title') danger @enderror col-12 col-md-10" />
+                    @error('title')
+                    <p style="color: red;">{{$message}}</p>
+                    @enderror
+                </div>
 
-    <label>Language: </label>
-    <input name="language" type="text" />
-    @error('language')
-    <br>
-    <p style="color: red;">{{$message}}</p>
-    @enderror
 
-    <label>Publication Date: </label>
-    <input name="publication_date" type="date" class="@error('publication_date') danger @enderror" />
-    @error('publication_date')
-    <br>
-    <p style="color: red;">{{ $message }}</p>
-    @enderror
+                <div class="row">
+                    <label class="col-12 col-md-2">Idioma: </label>
+                    <input name="language" class="col-12 col-md-10" type="text" />
+                    @error('language')
+                    <p style="color: red;">{{$message}}</p>
+                    @enderror
+                </div>
 
-    <label>Price: </label>
-    <input name="price" type="number" step="0.01" class="@error('price') danger @enderror" />
-    @error('price')
-    <br>
-    <p style="color: red;">{{ $message }}</p>
-    @enderror
+                <div class="row">
+                    <label class="col-12 col-md-2">Fecha de publicación: </label>
+                    <input name="publication_date" type="date" class="@error('publication_date') danger @enderror col-12 col-md-10" />
+                    @error('publication_date')
+                    <br>
+                    <p style="color: red;">{{ $message }}</p>
+                    @enderror
+                </div>
 
-    <label>Stock: </label>
-    <input name="stock" type="number" class="@error('stock') danger @enderror" />
-    @error('stock')
-    <br>
-    <p style="color: red;">{{ $message }}</p>
-    @enderror
+                <div class="row">
+                    <label class="col-12 col-md-2">Precio: </label>
+                    <input name="price" type="number" step="0.01" class="@error('price') danger @enderror col-12 col-md-10" />
+                    @error('price')
+                    <p style="color: red;">{{ $message }}</p>
+                    @enderror
+                </div>
 
-    <label>Format: </label>
-    <input name="format" type="text" class="@error('format') danger @enderror" />
-    @error('format')
-    <br>
-    <p style="color: red;">{{ $message }}</p>
-    @enderror
+                <div class="row">
+                    <label class="col-12 col-md-2">Stock: </label>
+                    <input name="stock" type="number" class="@error('stock') danger @enderror col-12 col-md-10" />
+                    @error('stock')
 
-    <label>Synopsis: </label>
-    <textarea name="synopsis" class="@error('synopsis') danger @enderror"></textarea>
-    @error('synopsis')
-    <br>
-    <p style="color: red;">{{ $message }}</p>
-    @enderror
+                    <p style="color: red;">{{ $message }}</p>
+                    @enderror
+                </div>
 
-    <label>Editorial:</label>
-    <select name="editorial_id">
-        @foreach($editorials as $editorial)
-        <option value="{{ $editorial->id }}">
-            {{ $editorial->name }}
-        </option>
-        @endforeach
-    </select>
+                <div class="row">
+                    <label class="col-12 col-md-2">Formato: </label>
+                    <input name="format" type="text" class="@error('format') danger @enderror col-12 col-md-10" />
+                    @error('format')
 
-    <label>Autores:</label>
+                    <p style="color: red;">{{ $message }}</p>
+                    @enderror
+                </div>
 
-    @foreach($authors as $author)
-    <div>
-        <input type="checkbox" name="authors[]" value="{{ $author->id }}">
-        {{ $author->name }}
+                <div class="row">
+                    <label class="col-12 col-md-2">Sinopsis: </label>
+                    <textarea name="synopsis" class="@error('synopsis') danger @enderror col-12 col-md-10"></textarea>
+                    @error('synopsis')
+
+                    <p style="color: red;">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="row">
+                    <label class="col-12 col-md-2">Editorial:</label>
+                    <select name="editorial_id">
+                        @foreach($editorials as $editorial)
+                        <option value="{{ $editorial->id }}">
+                            {{ $editorial->name }}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="row">
+                    <label class="col-12 col-md-2">Autores:</label>
+
+                    @foreach($authors as $author)
+                    <div>
+                        <input type="checkbox" name="authors[]" value="{{ $author->id }}">
+                        {{ $author->name }}
+                    </div>
+                    @endforeach
+                </div>
+
+                <div class="row">
+                    <label class="col-12 col-md-2">Libro existente:</label>
+                    <select name="book_id">
+                        <option value="">-- Crear nuevo libro --</option>
+
+                        @foreach($books as $book)
+                        <option value="{{ $book->id }}">
+                            {{ $book->title }}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="row">
+                    <label class="col-12 col-md-4">Nuevo libro (si no existe):</label>
+                    <input name="new_title" type="text" placeholder="Título del libro" class="col-12 col-md-8">
+
+                </div>
+                <div class="row">
+                    <label class="col-12 col-md-2">Género:</label>
+                    <input name="genre" type="text" class="col-12 col-md-10">
+                </div>
+                <div class="row">
+                    <input type="submit" value="Create Edition" />
+                </div>
+            </form>
+        </div>
+
     </div>
-    @endforeach
+</div>
 
-    <label>Libro existente:</label>
-    <select name="book_id">
-        <option value="">-- Crear nuevo libro --</option>
-
-        @foreach($books as $book)
-        <option value="{{ $book->id }}">
-            {{ $book->title }}
-        </option>
-        @endforeach
-    </select>
-
-    <label>Nuevo libro (si no existe):</label>
-    <input name="new_title" type="text" placeholder="Título del libro">
-
-    <label>Género:</label>
-    <input name="genre" type="text">
-
-    <input type="submit" value="Create Edition" />
-</form>
 @endsection

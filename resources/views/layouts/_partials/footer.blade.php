@@ -1,13 +1,13 @@
-<footer class="footer seccion-oscura">
+<footer class="footer">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 col-md-3">
+        <div class="row text-center">
+            <div class="col-12 col-md-6 col-lg-3">
                 <h5>Sobre nosotros</h5>
                 <p><a href="{{ route('about') }}">Quiénes somos</a></p>
                 <p><a href="{{ route('jobs') }}">Trabaja con nosotros</a></p>
             </div>
 
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-6 col-lg-3">
                 <h5>Atención al cliente</h5>
                 <p><a href="{{ route('faq') }}">Preguntas frecuentes</a></p>
                 <p><a href="{{ route('returns') }}">Devoluciones</a></p>
@@ -15,7 +15,7 @@
                 <p><a href="{{ route('contact') }}">Contacto</a></p>
             </div>
 
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-6 col-lg-3">
                 <h5>Información legal</h5>
                 <p><a href="{{ route('terms') }}">Condiciones de uso</a></p>
                 <p><a href="{{ route('privacy') }}">Política de privacidad</a></p>
@@ -23,11 +23,11 @@
                 <p><a href="{{ route('legal') }}">Aviso legal</a></p>
             </div>
 
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-6 col-lg-3">
                 <h5>Extras</h5>
-                <ul class="social-icons">
+                <ul class="d-flex flex-row justify-content-center gap-3 p-0">
                     <li>
-                        <a href="https://facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
+                        <a href=" https://facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
                     </li>
                     <li>
                         <a href="https://twitter.com" target="_blank"><i class="bi bi-twitter-x"></i></a>

@@ -1,21 +1,23 @@
 /* Estilos generales */
 :root {
-    --font-primary: "Arvo", sans-serif;
+    --font-primary: "Roboto", sans-serif;
 }
 
 body {
     font-family: var(--font-primary);
 }
 
-.seccion-oscura {
-    background-color: black;
-    color: white;
+a {
+    text-decoration: none;
+}
+
+.btn {
+    font-weight: bold;
 }
 
 /* Navbar */
 .navbar {
-    padding: 2rem;
-    background-color: red;
+    border-bottom: 1px solid rgb(179, 158, 158);
 }
 
 .navbar-collapse {
@@ -25,23 +27,45 @@ body {
 
 /* Welcome */
 .hero {
-    border: 1px solid black;
-    background-color: grey;
-    border-radius: 5px;
-    padding: 50px;
-    margin: 20px 0;
+    padding: 60px 0;
+    background: linear-gradient(90deg, #111, #333);
     color: white;
+    margin-bottom: 30px;
+}
+
+.card {
+    padding: 25px;
+    border: 0px;
+    font-weight: bold;
+}
+
+.portada-libro {
+    max-height: 300px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .seccion-content .card {
-    background-color: red;
     min-height: 250px;
-    margin-bottom: 20px;
+}
+
+.genero-titulo {
+    border-bottom: 2px solid grey;
+    margin: 10px 0px 10px 0px;
+}
+
+.genero-titulo h2 a {
+    color: black;
 }
 
 /* Details libro */
 .book-cover {
     max-width: 250px;
+}
+
+/* Form crear edition */
+
+label {
+    font-weight: bold;
 }
 
 /* Footer */
@@ -52,17 +76,17 @@ body {
     text-align: center;
     margin-top: 20px;
     padding-top: 20px;
+    border-top: 1px solid black;
 }
 
-.error {
-    border-color: red;
+.footer a {
+    color: rgb(34, 139, 34);
+}
+
+.footer ul {
+    list-style: none;
 }
 
 .social-icons {
     list-style: none;
-}
-
-.social-icons a {
-    text-decoration: none;
-    color: white;
 }

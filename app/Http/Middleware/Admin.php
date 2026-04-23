@@ -15,10 +15,12 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
+        //Si no estas aut vas a login
         if (!Auth()->check()) {
             return redirect('/login');
         }
 
+        //Si no eres admin te vas al home
         if (auth()->user()->role != 'admin') {
             return redirect('/');
         }
