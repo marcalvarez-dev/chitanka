@@ -31,7 +31,7 @@ class EditionRequest extends FormRequest
             'format' => 'required|max:100|min:3',
             'synopsis' => 'required|max:50|min:3',
             'editorial_id' => 'required|integer|exists:editorials,id',
-            'book_id' => 'required|integer|exists:books,id',
+            'book_id' => 'nullable|integer|exists:books,id',
         ];
     }
 }

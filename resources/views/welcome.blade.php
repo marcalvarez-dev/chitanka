@@ -7,7 +7,6 @@
 
 <!--Editionsbygenre es una collecion de colleciones-->
 @if(empty($editionsByGenre) && empty($editions))
-<p>No hay libros </p>
 @else
 <section class="hero text-center">
     <div class="container">

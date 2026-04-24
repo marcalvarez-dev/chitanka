@@ -28,10 +28,12 @@
                                 value="{{ old('email', auth()->user()->email) }}">
                         </div>
 
-                        <button class="btn btn-primary">Guardar</button>
+                        <button class="btn btn-primary mt-2">Guardar</button>
                     </form>
 
                 </div>
+                <h2>Borrar perfil de usuario</h2>
+
                 <div>
                     <div class="row">
                         <form method="POST" action="{{ route('profile.destroy') }}">
@@ -39,9 +41,11 @@
                             @method('DELETE')
 
                             <div class="col-12 col-md-6">
+                                <input type="password" name="password" class="form-control mt-2" placeholder="Confirma tu contraseña">
+
                                 <button
                                     type="submit"
-                                    class="btn btn-danger w-100 mt-2"
+                                    class="btn btn-danger w-100 mt-1"
                                     onclick="return confirm('¿Seguro que quieres borrar la cuenta?')">
                                     Borrar cuenta
                                 </button>

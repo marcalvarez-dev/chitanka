@@ -9,13 +9,7 @@
         <h1>Sobre nosotros</h1>
 
         <p>
-            Chitanka es una librería online creada como proyecto educativo.
-            Nuestro objetivo es ofrecer una experiencia de compra sencilla de libros
-            con gestión de usuarios, carrito y pedidos.
-        </p>
-
-        <p>
-            Este proyecto simula una tienda real usando Laravel.
+            Chitanka es una librería online creada como proyecto.
         </p>
 
     </div>

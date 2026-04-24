@@ -7,7 +7,7 @@
     <h1>Devoluciones</h1>
 
     <p>
-        No se permiten devoluciones en este proyecto educativo.
+        No se permiten devoluciones.
     </p>
 </div>
 @endsection

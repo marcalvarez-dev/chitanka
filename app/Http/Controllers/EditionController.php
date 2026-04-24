@@ -71,21 +71,17 @@ class EditionController extends Controller
     {
         if ($request->book_id) {
             $book = Book::find($request->book_id);
-            $bookId = $book->id;
         } else {
             $book = Book::create([
                 'title' => $request->new_title,
                 'genre' => $request->genre,
             ]);
-
-            $bookId = $book->id;
         }
 
-        if ($request->authors) {
+        if ($request->filled('authors')) {
             $book->authors()->sync($request->authors);
         }
 
-        // crear edición
         Edition::create([
             'isbn' => $request->isbn,
             'title' => $request->title,
@@ -96,11 +92,10 @@ class EditionController extends Controller
             'publication_date' => $request->publication_date,
             'synopsis' => $request->synopsis,
             'editorial_id' => $request->editorial_id,
-            'book_id' => $bookId,
+            'book_id' => $book->id,
         ]);
 
-        //edition::create($request->all());
-        return redirect()->route('edition.index')->with('succes', 'Libro creado');
+        return redirect()->route('edition.index')->with('success', 'Libro creado');
     }
 
     /**

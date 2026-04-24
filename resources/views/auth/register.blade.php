@@ -1,195 +1,102 @@
 @extends('layouts.auth')
 
-@section('title', 'Login')
+@section('title', 'Registrarse')
 
 @section('content')
+@if ($errors->any())
+<div style="background:red;color:white;padding:10px">
+    @foreach ($errors->all() as $error)
+    <div>{{ $error }}</div>
+    @endforeach
+</div>
+@endif
+<section class="d-flex align-items-center justify-content-center py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9">
+                <div class="card p-4">
+                    <h4 class="text-center mb-4">Registro de usuario</h4>
+                    @include('layouts._partials.messages')
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Nombre</label>
+                                <input type="text" name="name" class="form-control" value="{{ old('name') }}">
+                                @error('name') <div class="text-danger small">{{ $message }}</div> @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Apellidos</label>
+                                <input type="text" name="last_name" class="form-control" value="{{ old('last_name') }}">
+                                @error('last_name') <div class="text-danger small">{{ $message }}</div> @enderror
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Dirección</label>
+                                <input type="text" name="street" class="form-control">
+                                @error('street') <div class="text-danger small">{{ $message }}</div> @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Número</label>
+                                <input type="text" name="number" class="form-control" value="{{ old('number') }}">
+                                @error('number') <div class="text-danger small">{{ $message }}</div> @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">País</label>
+                                <input type="text" name="country" class="form-control">
+                                @error('country') <div class="text-danger small">{{ $message }}</div> @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Provincia</label>
+                                <input type="text" name="province" class="form-control">
+                                @error('province') <div class="text-danger small">{{ $message }}</div> @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Ciudad</label>
+                                <input type="text" name="city" class="form-control">
+                                @error('city') <div class="text-danger small">{{ $message }}</div> @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Código postal</label>
+                                <input type="text" name="postal_code" class="form-control">
+                                @error('postal_code') <div class="text-danger small">{{ $message }}</div> @enderror
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Email</label>
+                                <input type="email" name="email" class="form-control" value="{{ old('email') }}">
+                                @error('email') <div class="text-danger small">{{ $message }}</div> @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Contraseña</label>
+                                <input type="password" name="password" class="form-control">
+                                @error('password') <div class="text-danger small">{{ $message }}</div> @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Confirmar contraseña</label>
+                                <input type="password" name="password_confirmation" class="form-control">
+                            </div>
+                            <div class="col-12 text-center mt-2">
+                                <div class="form-check d-inline-block">
+                                    <input class="form-check-input" type="checkbox" required>
+                                    <label class="form-check-label">
+                                        He leído y acepto la Política de privacidad
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center mt-3">
+                                <button type="submit" class="btn btn-dark px-5">
+                                    REGÍSTRATE
+                                </button>
+                            </div>
 
+                        </div>
+                    </form>
 
-<h3>Register</h3>
+                </div>
 
-@include('layouts._partials.messages')
+            </div>
+        </div>
 
-<form method="POST" action="{{ route('register') }}">
-    @csrf
-
-    {{-- Name --}}
-    <div>
-        <label for="name">Name</label>
-        <input id="name"
-            type="text"
-            name="name"
-            value="{{ old('name') }}"
-            required
-            autofocus
-            autocomplete="name">
-
-        @error('name')
-        <div>{{ $message }}</div>
-        @enderror
     </div>
-
-    {{-- Last Name --}}
-    <div>
-        <label for="last_name">Last Name</label>
-        <input id="last_name"
-            type="text"
-            name="last_name"
-            value="{{ old('last_name') }}"
-            required
-            autocomplete="last_name">
-
-        @error('last_name')
-        <div>{{ $message }}</div>
-        @enderror
-    </div>
-
-    {{-- Email --}}
-    <div>
-        <label for="email">Email</label>
-        <input id="email"
-            type="email"
-            name="email"
-            value="{{ old('email') }}"
-            required
-            autocomplete="username">
-
-        @error('email')
-        <div>{{ $message }}</div>
-        @enderror
-    </div>
-
-    {{-- Password --}}
-    <div>
-        <label for="password">Password</label>
-        <input id="password"
-            type="password"
-            name="password"
-            required
-            autocomplete="new-password">
-
-        @error('password')
-        <div>{{ $message }}</div>
-        @enderror
-    </div>
-
-    {{-- Confirm Password --}}
-    <div>
-        <label for="password_confirmation">Confirm Password</label>
-        <input id="password_confirmation"
-            type="password"
-            name="password_confirmation"
-            required
-            autocomplete="new-password">
-    </div>
-
-    {{-- Country --}}
-    <div>
-        <label for="country">País</label>
-        <input id="country"
-            type="text"
-            name="country"
-            required
-            autocomplete="new-country">
-
-        @error('country')
-        <div>{{ $message }}</div>
-        @enderror
-    </div>
-
-    {{-- Province --}}
-    <div>
-        <label for="province">Provincia</label>
-        <input id="province"
-            type="text"
-            name="province"
-            required
-            autocomplete="new-province">
-
-        @error('province')
-        <div>{{ $message }}</div>
-        @enderror
-    </div>
-
-    {{-- City --}}
-    <div>
-        <label for="city">Ciudad</label>
-        <input id="city"
-            type="text"
-            name="city"
-            required
-            autocomplete="new-city">
-
-        @error('city')
-        <div>{{ $message }}</div>
-        @enderror
-    </div>
-
-    {{-- Postal Code --}}
-    <div>
-        <label for="postal_code">Código Postal</label>
-        <input id="postal_code"
-            type="text"
-            name="postal_code"
-            required
-            autocomplete="new-postal_code">
-
-        @error('postal_code')
-        <div>{{ $message }}</div>
-        @enderror
-    </div>
-
-    {{-- Street --}}
-    <div>
-        <label for="street">Calle</label>
-        <input id="street"
-            type="text"
-            name="street"
-            required
-            autocomplete="new-street">
-
-        @error('street')
-        <div>{{ $message }}</div>
-        @enderror
-    </div>
-
-    {{-- Door number --}}
-    <div>
-        <label for="number">Puerta</label>
-        <input id="number"
-            type="text"
-            name="number"
-            required
-            autocomplete="new-number">
-
-        @error('number')
-        <div>{{ $message }}</div>
-        @enderror
-    </div>
-
-    {{-- Apartment number --}}
-    <div>
-        <label for="apartment_number">Piso</label>
-        <input id="apartment_number"
-            type="text"
-            name="apartment_number"
-            required
-            autocomplete="new-apartment_number">
-
-        @error('apartment_number')
-        <div>{{ $message }}</div>
-        @enderror
-    </div>
-
-    {{-- Submit --}}
-    <button type="submit">
-        Register
-    </button>
-
-    {{-- Login link --}}
-    <div>
-        <a href="{{ route('login') }}">Already registered?</a>
-    </div>
-
-</form>
+</section>
 
 @endsection

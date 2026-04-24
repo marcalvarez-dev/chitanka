@@ -42,18 +42,18 @@
                     </div>
 
                     {{-- Remember --}}
-                    <div>
+                    <!--<div>
                         <input type="checkbox" name="remember" id="remember">
                         <label for="remember">Remember me</label>
-                    </div>
+                    </div>-->
 
                     {{-- Forgot password --}}
                     <div>
-                        @if (Route::has('password.request'))
+                        <!--@if (Route::has('password.request'))
                         <a href="{{ route('password.request') }}">
                             Has olvidado tu contraseña?
                         </a>
-                        @endif
+                        @endif-->
                     </div>
                     {{-- Submit --}}
                     <button class="btn btn-primary" type="submit">

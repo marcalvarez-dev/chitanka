@@ -4,25 +4,21 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class Admin
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  Closure(Request): (Response)  $next
-     */
     public function handle(Request $request, Closure $next): Response
     {
-        //Si no estas aut vas a login
-        if (!Auth()->check()) {
+        if (!Auth::check()) {
             return redirect('/login');
         }
 
-        //Si no eres admin te vas al home
-        if (auth()->user()->role != 'admin') {
-            return redirect('/');
+        $user = Auth::user();
+
+        if ($user->role !== 'admin') {
+            abort(403, 'No tienes permisos');
         }
 
         return $next($request);

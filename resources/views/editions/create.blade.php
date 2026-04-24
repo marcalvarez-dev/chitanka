@@ -120,7 +120,7 @@
                     <input name="genre" type="text" class="col-12 col-md-10">
                 </div>
                 <div class="row">
-                    <input type="submit" value="Create Edition" />
+                    <input type="submit" value="Crear edición" />
                 </div>
             </form>
         </div>
