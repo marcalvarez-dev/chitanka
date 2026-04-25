@@ -41,6 +41,14 @@ a {
 .card {
     padding: 25px;
     border: 0px;
+}
+
+.card h5 {
+    font-weight: bold;
+
+}
+
+.card-price {
     font-weight: bold;
 }
 
@@ -59,7 +67,8 @@ a {
 }
 
 .genero-titulo h2 a {
-    color: black;
+    color: #026818;
+    font-weight: bold;
 }
 
 /* Details libro */

@@ -17,7 +17,7 @@
             <div class="row">
                 @foreach ($editionsByGenre as $g => $editions)
                     <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <a href="{{ route('edition.genre', $g) }}" class="text-decoration-none">
+                        <a href="{{ route('edition.genre', ['genre' => $g]) }}" class="text-decoration-none">
                             <div class="card text-center h-100 genero-card">
                                 <div class="card-body d-flex align-items-center justify-content-center">
                                     <h5 class="mb-0">{{ $g }}</h5>
@@ -67,8 +67,8 @@
                                         </a>
                                     </h5>
 
-                                    <p>{{ $edition->price }}€</p>
-                                    <p>{{ $edition->book->authors->pluck('name')->join(', ') }}</p>
+                                    <p class="card-price">{{ $edition->price }}€</p>
+                                    <p>{{ $edition->book->author->name }}</p>
 
                                     <form method="POST" action="{{ route('cart.store') }}">
                                         @csrf

@@ -8,6 +8,7 @@ use App\Models\Book;
 use App\Models\Editorial;
 use App\Models\Author;
 use App\Http\Requests\EditionRequest;
+use App\Models\Category;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -19,10 +20,10 @@ class EditionController extends Controller
     public function index(): View
     {
         //Ediciones con sus libros relacionados
-        $editions = Edition::with('book')->get();
+        $editions = Edition::with('book.category')->get();
 
         //Todos los generos unicos
-        $genres = Book::select('genre')->distinct()->pluck('genre');
+        $genres = Category::pluck('name');
 
         //Array vacio para guardar genero y sus ediciones
         $editionsByGenre = [];
@@ -31,7 +32,7 @@ class EditionController extends Controller
         foreach ($editions as $edition) {
 
             //Saco genero del libro
-            $genre = $edition->book->genre;
+            $genre = $edition->book->category->name;
 
             //Si no existe el genero lo creo
             if (!isset($editionsByGenre[$genre])) {
@@ -41,6 +42,8 @@ class EditionController extends Controller
             //Meto edition dentro de su genero
             $editionsByGenre[$genre][] = $edition;
         }
+
+        $genres = Category::pluck('name');
 
         //Envio a la vista un mapa de arrays
         return view('welcome', compact('editionsByGenre', 'genres'));
@@ -62,9 +65,10 @@ class EditionController extends Controller
         $books = Book::all();
         $editorials = Editorial::all();
         $authors = Author::all();
+        $categories = Category::all();
 
 
-        return view('editions.create', compact('books', 'editorials', 'authors'));
+        return view('editions.create', compact('books', 'editorials', 'authors', 'categories'));
     }
 
     /**
@@ -80,17 +84,19 @@ class EditionController extends Controller
             $data['cover'] = 'covers/default.jpg';
         }
 
+        $author = Author::firstOrCreate([
+            'name' => trim($request->author)
+        ]);
+
         if ($request->book_id) {
             $book = Book::find($request->book_id);
         } else {
             $book = Book::create([
                 'title' => $request->new_title,
-                'genre' => $request->genre,
-            ]);
-        }
+                'category_id' => $request->genre,
+                'author_id' => $author->id,
 
-        if ($request->filled('authors')) {
-            $book->authors()->sync($request->authors);
+            ]);
         }
 
         $data['book_id'] = $book->id;
@@ -141,7 +147,7 @@ class EditionController extends Controller
         $editionsByGenre = [];
 
         foreach ($editions as $edition) {
-            $g = $edition->book->genre;
+            $g = $edition->book->category->name;
 
             if (!isset($editionsByGenre[$g])) {
                 $editionsByGenre[$g] = [];
@@ -167,7 +173,7 @@ class EditionController extends Controller
         $editionsByGenre = [];
 
         foreach ($editions as $edition) {
-            $genre = $edition->book->genre;
+            $genre = $edition->book->category->name;
 
             if (!isset($editionsByGenre[$genre])) {
                 $editionsByGenre[$genre] = [];

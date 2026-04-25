@@ -2,12 +2,10 @@
     <nav class="navbar navbar-expand-md navbar-light py-2">
         <div class="container position-relative">
 
-            <a class="navbar-brand" href="{{ route('edition.index') }}">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('edition.index') }}">
                 <img src="{{ asset('assets/img/logo.PNG') }}" width="80">
+                <span class="fw-bold">Chitanka</span>
             </a>
-            <p>
-                CHitanka
-            </p>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                 <span class="navbar-toggler-icon"></span>

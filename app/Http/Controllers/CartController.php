@@ -18,8 +18,10 @@ class CartController extends Controller
     public function index(): View
     {
         $cart = Cart::with('items.edition')
-            ->where('user_id', auth()->id())
-            ->first();
+            ->firstOrCreate([
+                'user_id' => auth()->id()
+            ]);
+
 
         return view('cart.index', compact('cart'));
     }
@@ -45,7 +47,7 @@ class CartController extends Controller
         return redirect()->route('edition.index');
     }
 
-    public function checkout(Request $request): View
+    public function checkout(Request $request): RedirectResponse
     {
         $cart = Cart::with('items.edition')
             ->where('user_id', auth()->id())
@@ -57,13 +59,22 @@ class CartController extends Controller
 
         $order = null;
         $total = 0;
-        $address = Address::find($request->address_id);
+        $addressId = null;
+        $address = null;
 
 
-        DB::transaction(function () use ($cart, $request, &$order, &$total) {
+        if ($request->shipping_method !== 'pickup') {
+            $addressId = $request->address_id;
+            $address = Address::find($addressId);
+        }
+
+
+        $items = $cart->items;
+
+        DB::transaction(function () use ($cart, $request, &$order, &$total, $addressId) {
             $order = Order::create([
                 'user_id' => auth()->id(),
-                'address_id' => $request->address_id,
+                'address_id' => $addressId,
                 'status' => 'pending',
                 'date' => now(),
                 'total_price' => 0,
@@ -87,8 +98,11 @@ class CartController extends Controller
                 'total_price' => $total
             ]);
 
+
             $cart->items()->delete();
         });
+
+
 
         Mail::to(auth()->user()->email)
             ->send(new OrderCreateMail(

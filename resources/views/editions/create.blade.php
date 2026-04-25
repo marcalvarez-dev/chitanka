@@ -29,8 +29,12 @@
 
                     <div class="row">
                         <label class="col-12 col-md-12 col-lg-2">Idioma: </label>
-                        <input name="language" class="col-12 col-md-12 col-lg-10" type="text" />
-                        @error('language')
+                        <select name="language" class="col-12 col-md-10">
+                            <option value="Español">Español</option>
+                            <option value="Inglés">Inglés</option>
+                            <option value="Francés">Francés</option>
+                            <option value="Alemán">Alemán</option>
+                        </select> @error('language')
                             <p style="color: red;">{{ $message }}</p>
                         @enderror
                     </div>
@@ -65,16 +69,14 @@
 
                     <div class="row">
                         <label class="col-12 col-md-12 col-lg-2">Formato: </label>
-                        <input name="format" type="text"
-                            class="@error('format') danger @enderror col-12 col-md-12 col-lg-10" />
+                        <select name="format" class="col-12 col-md-10">
+                            <option value="Tapa dura">Tapa dura</option>
+                            <option value="Tapa blanda">Tapa blanda</option>
+                            <option value="Ebook">Ebook</option>
+                        </select>
                         @error('format')
                             <p style="color: red;">{{ $message }}</p>
                         @enderror
-                    </div>
-
-                    <div class="row">
-                        <label class="col-12 col-md-12 col-lg-2">Portada: </label>
-                        <input type="file" name="cover" class="col-12 col-md-12 col-lg-10" accept="image/*">
                     </div>
 
                     <div class="row">
@@ -86,7 +88,7 @@
                     </div>
                     <div class="row">
                         <label class="col-12 col-md-12 col-lg-2">Editorial:</label>
-                        <select name="editorial_id">
+                        <select class="col-12 col-md-10" name="editorial_id">
                             @foreach ($editorials as $editorial)
                                 <option value="{{ $editorial->id }}">
                                     {{ $editorial->name }}
@@ -96,20 +98,14 @@
                     </div>
 
                     <div class="row">
-                        <label class="col-12 col-md-12 col-lg-2">Autores:</label>
-
-                        @foreach ($authors as $author)
-                            <div>
-                                <input type="checkbox" name="authors[]" value="{{ $author->id }}">
-                                {{ $author->name }}
-                            </div>
-                        @endforeach
+                        <label class="col-12 col-md-12 col-lg-2">Autor:</label>
+                        <input type="text" name="author" class="col-12 col-md-10">
                     </div>
 
                     <div class="row">
                         <label class="col-12 col-md-12 col-lg-2">Libro existente:</label>
                         <select name="book_id">
-                            <option value="">Crear nuevo libro</option>
+                            <option value="">-- Crear nuevo libro --</option>
 
                             @foreach ($books as $book)
                                 <option value="{{ $book->id }}">
@@ -127,10 +123,16 @@
                     </div>
                     <div class="row">
                         <label class="col-12 col-md-12 col-lg-2">Género:</label>
-                        <input name="genre" type="text" class="col-12 col-md-12 col-lg-10">
+                        <select name="genre" class="col-12 col-md-10">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="row">
-                        <input type="submit" value="Crear edición" />
+                        <input type="submit" class="btn btn-primary" value="Crear edición" />
                     </div>
                 </form>
             </div>

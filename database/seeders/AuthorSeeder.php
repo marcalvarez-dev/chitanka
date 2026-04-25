@@ -15,19 +15,43 @@ class AuthorSeeder extends Seeder
     public function run(): void
     {
         Author::create([
-            'name' => 'Miguel',
-            'last_name' => 'De cervantes'
+            'name' => 'Miguel De Cervantes',
         ]);
 
         Author::create([
-            'name' => 'Ernest',
-            'last_name' => 'Junger'
+            'name' => 'Ernest Jünger',
         ]);
-
 
         Author::create([
             'name' => 'Homero',
-            'last_name' => 'Desconocido'
+        ]);
+
+        Author::create([
+            'name' => 'George Orwell',
+        ]);
+
+        Author::create([
+            'name' => 'J.R.R. Tolkien',
+        ]);
+
+        Author::create([
+            'name' => 'Gabriel García Márquez',
+        ]);
+
+        Author::create([
+            'name' => 'Jane Austen',
+        ]);
+
+        Author::create([
+            'name' => 'Fyodor Dostoevsky',
+        ]);
+
+        Author::create([
+            'name' => 'Stephen King',
+        ]);
+
+        Author::create([
+            'name' => 'Dan Brown',
         ]);
 
         /*DB::table('author_book')->insert([
