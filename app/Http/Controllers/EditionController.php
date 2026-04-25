@@ -70,10 +70,17 @@ class EditionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(EditonRequest $request): RedirectResponse
+    public function store(EditionRequest $request): RedirectResponse
     {
-        //Si existe el libro me lo guardo, si no existe lo creo
-        if ($request->book_idi) {
+        $data = $request->validated();
+
+        if ($request->hasFile('cover')) {
+            $data['cover'] = $request->file('cover')->store('covers', 'public');
+        } else {
+            $data['cover'] = 'covers/default.jpg';
+        }
+
+        if ($request->book_id) {
             $book = Book::find($request->book_id);
         } else {
             $book = Book::create([
@@ -82,23 +89,14 @@ class EditionController extends Controller
             ]);
         }
 
-        //Adigno autores a un libro y sustituyo los anteriores por los nuevos
         if ($request->filled('authors')) {
             $book->authors()->sync($request->authors);
         }
 
-        Edition::create([
-            'isbn' => $request->isbn,
-            'title' => $request->title,
-            'language' => $request->language,
-            'price' => $request->price,
-            'stock' => $request->stock,
-            'format' => $request->format,
-            'publication_date' => $request->publication_date,
-            'synopsis' => $request->synopsis,
-            'editorial_id' => $request->editorial_id,
-            'book_id' => $book->id,
-        ]);
+        $data['book_id'] = $book->id;
+        $data['editorial_id'] = $request->editorial_id;
+
+        Edition::create($data);
 
         return redirect()->route('edition.index')->with('success', 'Libro creado');
     }
@@ -139,24 +137,24 @@ class EditionController extends Controller
     {
         $editions = Edition::with('book')->get();
 
-    // Todos los géneros (igual que index)
-    $editionsByGenre = [];
+        // Todos los géneros (igual que index)
+        $editionsByGenre = [];
 
-    foreach ($editions as $edition) {
-        $g = $edition->book->genre;
+        foreach ($editions as $edition) {
+            $g = $edition->book->genre;
 
-        if (!isset($editionsByGenre[$g])) {
-            $editionsByGenre[$g] = [];
+            if (!isset($editionsByGenre[$g])) {
+                $editionsByGenre[$g] = [];
+            }
+
+            $editionsByGenre[$g][] = $edition;
         }
 
-        $editionsByGenre[$g][] = $edition;
+        // Solo los libros del género seleccionado
+        $filteredEditions = $editionsByGenre[$genre] ?? [];
+
+        return view('welcome', compact('editionsByGenre', 'filteredEditions', 'genre'));
     }
-
-    // Solo los libros del género seleccionado
-    $filteredEditions = $editionsByGenre[$genre] ?? [];
-
-    return view('welcome', compact('editionsByGenre', 'filteredEditions', 'genre'));
- }
 
     public function search(Request $request)
     {

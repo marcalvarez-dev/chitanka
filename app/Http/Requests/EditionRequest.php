@@ -29,9 +29,10 @@ class EditionRequest extends FormRequest
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
             'format' => 'required|max:100|min:3',
-            'synopsis' => 'required|max:50|min:3',
+            'synopsis' => 'required|min:3',
             'editorial_id' => 'required|integer|exists:editorials,id',
             'book_id' => 'nullable|integer|exists:books,id',
+            'cover' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
         ];
     }
 }

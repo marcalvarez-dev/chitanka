@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('stock');
             $table->string('format');
             $table->text('synopsis');
+            $table->string('cover')->nullable();
             //Foreign keys
             $table->unsignedBigInteger('editorial_id');
             $table->unsignedBigInteger('book_id');

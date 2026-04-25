@@ -10,12 +10,12 @@ use App\Models\Address;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderCreateMail;
-
-
+use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class CartController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $cart = Cart::with('items.edition')
             ->where('user_id', auth()->id())
@@ -24,7 +24,7 @@ class CartController extends Controller
         return view('cart.index', compact('cart'));
     }
 
-    public function add($id)
+    public function add($id): RedirectResponse
     {
         $edition = Edition::find($id);
 
@@ -45,7 +45,7 @@ class CartController extends Controller
         return redirect()->route('edition.index');
     }
 
-    public function checkout(Request $request)
+    public function checkout(Request $request): View
     {
         $cart = Cart::with('items.edition')
             ->where('user_id', auth()->id())
@@ -115,7 +115,7 @@ class CartController extends Controller
         return view('checkout.index', compact('cart', 'addresses'));
     }
 
-    public function checkoutForm(Request $request)
+    public function checkoutForm(Request $request): View
     {
         $cart = Cart::with('items.edition')->where('user_id', auth()->id())->first();
 
@@ -128,5 +128,16 @@ class CartController extends Controller
             'addresses' => $addresses,
             'shipping' => $request->shipping_method
         ]);
+    }
+
+    public function clear()
+    {
+        $cart = Cart::firstOrCreate([
+            'user_id' => auth()->id()
+        ]);
+
+        $cart->items()->delete();
+
+        return back();
     }
 }

@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('edition_order', function (Blueprint $table) {
-            $table->id();
             //FK de las dos tablas
             $table->unsignedBigInteger('edition_id');
             $table->unsignedBigInteger('order_id');
             $table->integer('quantity');
             $table->decimal('unitary_price', 10, 2);
             $table->timestamps();
+            $table->primary(['order_id', 'edition_id']);
         });
     }
 

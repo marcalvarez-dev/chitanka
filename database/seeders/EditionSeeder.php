@@ -107,6 +107,9 @@ class EditionSeeder extends Seeder
                     'format' => $formats[array_rand($formats)],
 
                     'synopsis' => fake()->paragraph(3),
+
+                    'cover' => 'covers/default.jpg',
+
                 ]);
             }
         }

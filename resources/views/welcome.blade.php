@@ -3,11 +3,12 @@
 @section('title', 'Chitanka | Tu librería online')
 
 @section('content')
-
-    <section class="hero text-center">
+    <section class="text-center">
         <div class="container">
-            <h1 class="display-5 fw-bold">Ofertas de hasta el 50%</h1>
-            <p class="lead">Descubre libros con hasta un 50% de descuento</p>
+            <div class="row hero">
+                <h1 class="display-5 fw-bold">Ofertas de hasta el 50%</h1>
+                <p class="lead">Descubre libros con hasta un 50% de descuento</p>
+            </div>
         </div>
     </section>
 
@@ -29,7 +30,6 @@
         </div>
     </section>
 
-    {{-- 📚 LIBROS --}}
     <section class="seccion-content">
         <div class="container">
 
@@ -55,7 +55,8 @@
 
                                 <div class="card-cover">
                                     <a href="{{ route('edition.details', $edition->id) }}">
-                                        <img src="{{ asset('assets/img/cover.jpg') }}" class="card-img-top portada-libro">
+                                        <img src="{{ $edition->cover ? asset('storage/' . $edition->cover) : asset('assets/img/cover.jpg') }}"
+                                            class="card-img-top portada-libro">
                                     </a>
                                 </div>
 
