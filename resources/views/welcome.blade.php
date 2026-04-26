@@ -85,13 +85,11 @@
                                                 Modificar
                                             </a>
 
-                                            <form method="POST" action="{{ route('edition.delete', $edition->id) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger w-100">
-                                                    Eliminar
-                                                </button>
-                                            </form>
+                                            <button type="button" class="btn btn-danger w-100 mt-2" data-bs-toggle="modal"
+                                                data-bs-target="#confirmModal"
+                                                data-url="{{ route('edition.delete', $edition->id) }}">
+                                                Eliminar
+                                            </button>
                                         @endif
                                     @endauth
                                 </div>
@@ -99,13 +97,46 @@
                             </div>
                         </div>
 
+
                     @empty
                         <p>No hay libros en este género.</p>
                     @endforelse
                 </div>
             @endforeach
+            <form id="deleteForm" method="POST">
+                @csrf
+                @method('DELETE')
+            </form>
 
         </div>
     </section>
+    <div class="modal fade" id="confirmModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmar eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    ¿Seguro que quieres eliminar esta edición?
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancelar
+                    </button>
+
+                    <button type="button" class="btn btn-danger" onclick="document.getElementById('deleteForm').submit();">
+                        Sí, eliminar
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 @endsection

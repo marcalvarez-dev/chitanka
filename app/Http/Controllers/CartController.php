@@ -7,6 +7,7 @@ use App\Models\Edition;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Address;
+use App\Models\CartItem;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderCreateMail;
@@ -151,6 +152,30 @@ class CartController extends Controller
         ]);
 
         $cart->items()->delete();
+
+        return back();
+    }
+
+    public function increase($id)
+    {
+        $item = CartItem::findOrFail($id);
+        $item->quantity += 1;
+        $item->save();
+
+        return back();
+    }
+
+    public function decrease($id)
+    {
+        $item = CartItem::findOrFail($id);
+
+        $item->quantity -= 1;
+
+        if ($item->quantity <= 0) {
+            $item->delete();
+        } else {
+            $item->save();
+        }
 
         return back();
     }

@@ -23,7 +23,21 @@
                                         <h5>Edición eliminada</h5>
                                     @endif
 
-                                    <p>Cantidad: {{ $item->quantity }}</p>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <form method="POST" action="{{ route('cart.item.decrease', $item->id) }}">
+                                            @csrf
+                                            @method('PATCH')
+                                            <button class="btn btn-sm btn-secondary">-</button>
+                                        </form>
+
+                                        <span>{{ $item->quantity }}</span>
+                                        <form method="POST" action="{{ route('cart.item.increase', $item->id) }}">
+                                            @csrf
+                                            @method('PATCH')
+                                            <button class="btn btn-sm btn-secondary">+</button>
+                                        </form>
+
+                                    </div>
                                 </div>
                                 <div>
                                     <p">

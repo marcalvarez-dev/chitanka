@@ -13,25 +13,30 @@
     <h2>Tu compra se ha realizado con éxito</h2>
 
     <h5>Detalles del pedido</h5>
+    <p><strong>Fecha del pedido:</strong> {{ $date }}</p>
     <div>
-        <p><strong>Fecha del pedido:</strong> {{ $date }}</p>
+        @if ($address)
+            <p><strong>Dirección de envío:</strong></p>
 
-        <p><strong>Dirección de envío:</strong></p>
-        <p>
             {{ $address->street }} <br>
             {{ $address->city }} <br>
             {{ $address->postal_code }} <br>
             {{ $address->country }}
-        </p>
+            </p>
+        @else
+            <p> Recogida en tienda </p>
+        @endif
+
+
     </div>
 
     <div>
-        @foreach($items as $item)
-        <p>
-            {{ $item->edition->title }} x
-            {{ $item->quantity }}:
-            {{ $item->edition->price }}€
-        </p>
+        @foreach ($items as $item)
+            <p>
+                {{ $item->edition->title }} x
+                {{ $item->quantity }}:
+                {{ $item->edition->price }}€
+            </p>
         @endforeach
     </div>
 

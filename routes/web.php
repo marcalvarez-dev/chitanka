@@ -66,6 +66,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/cart/items/{id}', [CartItemController::class, 'destroy'])->name('cart.item.delete');
     Route::delete('/cart', [CartController::class, 'clear'])->name('cart.clear');
 
+    Route::patch('/cart/item/{id}/increase', [CartController::class, 'increase'])->name('cart.item.increase');
+    Route::patch('/cart/item/{id}/decrease', [CartController::class, 'decrease'])->name('cart.item.decrease');
+
     // Checkout 
     Route::post('/checkout/review', [CartController::class, 'review'])->name('checkout.review');
     Route::post('/checkout/finish', [CartController::class, 'checkout'])->name('checkout.finish');
