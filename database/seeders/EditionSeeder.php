@@ -108,7 +108,7 @@ class EditionSeeder extends Seeder
 
                     'synopsis' => fake()->paragraph(3),
 
-                    'cover' => 'covers/default.jpg',
+                    'cover' => 'default.jpg',
 
                 ]);
             }

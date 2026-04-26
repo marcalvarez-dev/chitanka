@@ -8,8 +8,8 @@
             <div class="row pt-5">
                 <div class="col-12 col-md-6 col-lg-6">
                     <div>
-                        <img src="{{ $edition->cover ? asset('storage/' . $edition->cover) : asset('assets/img/cover.jpg') }}"
-                            class="book-cover" alt="Portade del libro">
+                        <img src="{{ $edition->cover ? asset('assets/img/covers/' . $edition->cover) : asset('assets/img/cover.jpg') }}"
+                            class="book-cover" alt="Portada del libro">
                     </div>
                 </div>
 

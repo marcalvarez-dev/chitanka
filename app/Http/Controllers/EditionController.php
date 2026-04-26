@@ -79,9 +79,12 @@ class EditionController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('cover')) {
-            $data['cover'] = $request->file('cover')->store('covers', 'public');
+            $file = $request->file('cover');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('assets/img/covers'), $filename);
+            $data['cover'] = $filename;
         } else {
-            $data['cover'] = 'covers/default.jpg';
+            $data['cover'] = 'default.jpg';
         }
 
         $author = Author::firstOrCreate([

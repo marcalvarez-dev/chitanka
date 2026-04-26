@@ -55,7 +55,7 @@
 
                                 <div class="card-cover">
                                     <a href="{{ route('edition.details', $edition->id) }}">
-                                        <img src="{{ $edition->cover ? asset('storage/' . $edition->cover) : asset('assets/img/cover.jpg') }}"
+                                        <img src="{{ $edition->cover ? asset('assets/img/covers/' . $edition->cover) : asset('assets/img/cover.jpg') }}"
                                             class="card-img-top portada-libro">
                                     </a>
                                 </div>
