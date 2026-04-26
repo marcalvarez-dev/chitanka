@@ -84,7 +84,16 @@ class EditionSeeder extends Seeder
         $formats = ['Tapa dura', 'Bolsillo'];
         $languages = ['Español', 'Inglés'];
 
+        $covers = [
+            1 => 'book1.jpg',
+            2 => 'book2.jpg',
+            3 => 'book3.jpg',
+            4 => 'book4.jpg',
+        ];
+
         foreach ($books as $book) {
+
+            $cover = $covers[$book->id] ?? 'book1.jpg';
 
             for ($i = 1; $i <= 2; $i++) {
 
@@ -108,8 +117,7 @@ class EditionSeeder extends Seeder
 
                     'synopsis' => fake()->paragraph(3),
 
-                    'cover' => 'default.jpg',
-
+                    'cover' => $cover,
                 ]);
             }
         }

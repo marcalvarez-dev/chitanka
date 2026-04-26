@@ -26,8 +26,18 @@
 
                             <div class="col-12 col-md-6 mb-3">
                                 <label class="form-label">Idioma:</label>
-                                <input name="language" type="text" class="form-control"
-                                    value="{{ $edition->language }}" />
+                                <select name="language" class="form-select">
+                                    @php
+                                        $languages = ['Español', 'Inglés', 'Francés', 'Alemán'];
+                                    @endphp
+
+                                    @foreach ($languages as $lang)
+                                        <option value="{{ $lang }}"
+                                            {{ $edition->language == $lang ? 'selected' : '' }}>
+                                            {{ $lang }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="col-12 col-md-6 mb-3">
@@ -49,7 +59,18 @@
 
                             <div class="col-12 col-md-4 mb-3">
                                 <label class="form-label">Formato:</label>
-                                <input name="format" type="text" class="form-control" value="{{ $edition->format }}" />
+                                @php
+                                    $formats = ['Tapa dura', 'Tapa blanda', 'Ebook'];
+                                @endphp
+
+                                <select name="format" class="form-select">
+                                    @foreach ($formats as $format)
+                                        <option value="{{ $format }}"
+                                            {{ $edition->format == $format ? 'selected' : '' }}>
+                                            {{ $format }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="col-12 mb-3">
