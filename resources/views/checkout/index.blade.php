@@ -3,85 +3,95 @@
 @section('title', 'Checkout')
 
 @section('content')
-<section>
-    <div class="container">
-        <div class="row">
-    
-<h2>Finalizar compra</h2>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-8">
+                        <h2>Finalizar compra</h2>
 
-<h4>Método de envío</h4>
+                        <h4>Método de envío</h4>
 
-<form method="GET" action="{{ route('checkout.form') }}">
-    <label>
-        <input type="radio" name="shipping_method" value="home" required>
-        Envío a domicilio
-    </label>
+                        <form method="GET" action="{{ route('checkout.form') }}">
 
-    <label>
-        <input type="radio" name="shipping_method" value="pickup">
-        Recogida en tienda
-    </label>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="shipping_method" value="home" required>
+                                <label class="form-check-label">
+                                    Envío a domicilio
+                                </label>
+                            </div>
 
-    <button type="submit">Continuar</button>
-</form>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="radio" name="shipping_method" value="pickup">
+                                <label class="form-check-label">
+                                    Recogida en tienda
+                                </label>
+                            </div>
 
-@isset($shipping)
-@if($shipping == 'home')
-<form method="POST" action="{{ route('checkout.finish') }}">
-    @csrf
-    <h4>Selecciona una dirección</h4>
+                            <button class="btn btn-primary" type="submit">
+                                Continuar
+                            </button>
 
-    @forelse($addresses as $address)
-    <div class="border p-2 mb-2">
-        <label>
-            <input type="radio" name="address_id" value="{{ $address->id }}" required>
-            {{ $address->street }}
-            {{ $address->city ?? '' }}
-        </label>
-    </div>
-    @empty
-    <p>No tienes direcciones</p>
+                        </form>
 
-    <a href="{{ route('addresses.create') }}">Añadir dirección</a>
-    @endforelse
+                        @isset($shipping)
+                            @if ($shipping == 'home')
+                                <form method="POST" action="{{ route('checkout.finish') }}">
+                                    @csrf
+                                    <h4>Selecciona una dirección</h4>
 
-    <button type="submit">Confirmar pedido</button>
+                                    @forelse($addresses as $address)
+                                        <div class="border p-2 mb-2">
+                                            <label>
+                                                <input type="radio" name="address_id" value="{{ $address->id }}" required>
+                                                {{ $address->street }}
+                                                {{ $address->city ?? '' }}
+                                            </label>
+                                        </div>
+                                    @empty
+                                        <p>No tienes direcciones</p>
 
-</form>
-@endif
+                                        <a href="{{ route('addresses.create') }}">Añadir dirección</a>
+                                        <br>
+                                    @endforelse
 
-@if($shipping == 'pickup')
-<form method="POST" action="{{ route('checkout.finish') }}">
-    @csrf
+                                    <button class="btn btn-success mt-3" type="submit">Confirmar pedido</button>
 
-    <input type="hidden" name="shipping_method" value="pickup">
+                                </form>
+                            @endif
 
-    <p>Recogida en tienda</p>
+                            @if ($shipping == 'pickup')
+                                <form method="POST" action="{{ route('checkout.finish') }}">
+                                    @csrf
 
-    <button type="submit">Confirmar pedido</button>
-</form>
-@endif
-@endisset
+                                    <input type="hidden" name="shipping_method" value="pickup">
 
-<h4>Resumen del pedido</h4>
+                                    <p>Recogida en tienda</p>
 
-@php $total = 0; @endphp
+                                    <button class="btn btn-success mt-3" type="submit">Confirmar pedido</button>
+                                </form>
+                            @endif
+                        @endisset
 
-@foreach($cart->items as $item)
-<p>
-    {{ $item->edition->title }}
-    (x{{ $item->quantity }})
-    - {{ $item->edition->price }}€
-</p>
+                        <h4>Resumen del pedido</h4>
 
-@php $total += $item->edition->price * $item->quantity; @endphp
-@endforeach
+                        @php $total = 0; @endphp
 
-<p><strong>Total: {{ $total }}€</strong></p>
+                        @foreach ($cart->items as $item)
+                            <p>
+                                {{ $item->edition->title }}
+                                (x{{ $item->quantity }})
+                                - {{ $item->edition->price }}€
+                            </p>
+
+                            @php $total += $item->edition->price * $item->quantity; @endphp
+                        @endforeach
+
+                        <p><strong>Total: {{ $total }}€</strong></p>
+
+                    </div>
+                </div>
+            </div>
         </div>
-
     </div>
-
-</section>
-
 @endsection

@@ -80,6 +80,11 @@
                     </div>
 
                     <div class="row">
+                        <label class="col-12 col-md-12 col-lg-2">Portada: </label>
+                        <input type="file" name="cover" class="col-12 col-md-12 col-lg-10" accept="image/*">
+                    </div>
+
+                    <div class="row">
                         <label class="col-12 col-md-12 col-lg-2">Sinopsis: </label>
                         <textarea name="synopsis" class="@error('synopsis') danger @enderror col-12 col-md-12 col-lg-10"></textarea>
                         @error('synopsis')
