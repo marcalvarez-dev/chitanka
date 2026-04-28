@@ -6,8 +6,8 @@
     <section class="text-center">
         <div class="container">
             <div class="row hero">
-                <h1 class="display-5 fw-bold">Ofertas de hasta el 50%</h1>
-                <p class="lead">Descubre libros con hasta un 50% de descuento</p>
+                <h1 class="fw-bold display-5">Ofertas de hasta el 50%</h1>
+                <p class="lead mt-5">Descubre libros con hasta un 50% de descuento</p>
             </div>
         </div>
 
