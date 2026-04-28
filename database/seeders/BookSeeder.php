@@ -41,6 +41,13 @@ class BookSeeder extends Seeder
             ['title' => 'Cien años de soledad', 'genre' => 'Realismo'],
             ['title' => '1984', 'genre' => 'Distopía'],
             ['title' => 'El principito', 'genre' => 'Fábula'],
+            ['title' => 'Orgullo y prejuicio', 'genre' => 'Romance'],
+            ['title' => 'Harry Potter y la piedra filosofal', 'genre' => 'Fantasía'],
+            ['title' => 'El señor de los anillos: La comunidad del anillo', 'genre' => 'Fantasía'],
+            ['title' => 'Los juegos del hambre', 'genre' => 'Distopía'],
+            ['title' => 'El alquimista', 'genre' => 'Novela'],
+            ['title' => 'Crónica de una muerte anunciada', 'genre' => 'Realismo'],
+
         ];
 
         foreach ($books as $i => $bookData) {

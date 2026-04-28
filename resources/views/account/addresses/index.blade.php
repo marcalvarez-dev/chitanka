@@ -1,6 +1,6 @@
 @extends('layouts.account')
 
-@section('title', 'Hola')
+@section('title', 'Datos de facturación')
 
 @section('content')
     <div class="container">

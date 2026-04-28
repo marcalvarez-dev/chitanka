@@ -20,10 +20,19 @@ class EditionController extends Controller
     public function index(): View
     {
         //Ediciones con sus libros relacionados
-        $editions = Edition::with('book.category')->get();
+        //$editions = Edition::with('book.category')->get();
+
+        $latestEditions = Edition::with('book.category')
+            ->latest()   // ordena por created_at DESC
+            ->take(8)    // solo 8 libros
+            ->get();
+
 
         //Todos los generos unicos
         $genres = Category::pluck('name');
+
+        $editions = Edition::with('book.category')->get();
+
 
         //Array vacio para guardar genero y sus ediciones
         $editionsByGenre = [];
@@ -43,10 +52,9 @@ class EditionController extends Controller
             $editionsByGenre[$genre][] = $edition;
         }
 
-        $genres = Category::pluck('name');
 
         //Envio a la vista un mapa de arrays
-        return view('welcome', compact('editionsByGenre', 'genres'));
+        return view('welcome', compact('latestEditions', 'editionsByGenre', 'genres'));
     }
 
     public function details($id): View

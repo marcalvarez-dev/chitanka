@@ -81,45 +81,49 @@ class EditionSeeder extends Seeder
         $books = \App\Models\Book::all();
         $editorials = \App\Models\Editorial::pluck('id')->toArray();
 
-        $formats = ['Tapa dura', 'Bolsillo'];
-        $languages = ['Español', 'Inglés'];
+        $formats = ['Tapa dura', 'Tapa blanda', 'Ebook'];
+        $languages = ['Español', 'Inglés', 'Alemán', 'Francés'];
 
         $covers = [
             1 => 'book1.jpg',
             2 => 'book2.jpg',
             3 => 'book3.jpg',
             4 => 'book4.jpg',
+            5 => 'book5.jpg',
+            6 => 'book6.jpg',
+            7 => 'book7.jpg',
+            8 => 'book8.jpg',
+            9 => 'book9.jpg',
+            10 => 'book10.jpg',
         ];
 
         foreach ($books as $book) {
 
             $cover = $covers[$book->id] ?? 'book1.jpg';
 
-            for ($i = 1; $i <= 2; $i++) {
 
-                \App\Models\Edition::create([
-                    'book_id' => $book->id,
-                    'editorial_id' => $editorials[array_rand($editorials)],
+            \App\Models\Edition::create([
+                'book_id' => $book->id,
+                'editorial_id' => $editorials[array_rand($editorials)],
 
-                    'isbn' => fake()->unique()->numerify('#############'),
+                'isbn' => fake()->unique()->numerify('#############'),
 
-                    'title' => $book->title . ' - Edición ' . $i,
+                'title' => $book->title . ' - Edición 1',
 
-                    'language' => $languages[array_rand($languages)],
+                'language' => $languages[array_rand($languages)],
 
-                    'publication_date' => fake()->date(),
+                'publication_date' => fake()->date(),
 
-                    'price' => rand(10, 35),
+                'price' => rand(10, 35),
 
-                    'stock' => rand(0, 50),
+                'stock' => rand(0, 50),
 
-                    'format' => $formats[array_rand($formats)],
+                'format' => $formats[array_rand($formats)],
 
-                    'synopsis' => fake()->paragraph(3),
+                'synopsis' => fake()->paragraph(3),
 
-                    'cover' => $cover,
-                ]);
-            }
+                'cover' => $cover,
+            ]);
         }
     }
 }

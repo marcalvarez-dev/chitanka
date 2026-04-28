@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('editions', function (Blueprint $table) {
             $table->id();
             $table->string('isbn', 13)->unique();
-            $table->string('title', 50);
+            $table->string('title', 100);
             $table->string('language', 50);
             $table->date('publication_date');
             $table->decimal('price', 10, 2);

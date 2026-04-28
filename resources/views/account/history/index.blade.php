@@ -1,6 +1,6 @@
 @extends('layouts.account')
 
-@section('title', 'hola')
+@section('title', 'Mis pedidos')
 
 @section('content')
 

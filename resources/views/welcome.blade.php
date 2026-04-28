@@ -10,6 +10,31 @@
                 <p class="lead">Descubre libros con hasta un 50% de descuento</p>
             </div>
         </div>
+
+        <section class="container mt-4">
+            <h2>Últimas novedades</h2>
+
+            <div class="row">
+                @foreach ($latestEditions as $edition)
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="card">
+
+                            <a href="{{ route('edition.details', $edition->id) }}">
+                                <img class="portada-libro"
+                                    src="{{ $edition->cover ? asset('assets/img/covers/' . $edition->cover) : asset('assets/img/cover.jpg') }}"
+                                    class="card-img-top">
+                            </a>
+
+                            <div class="card-body">
+                                <h5>{{ $edition->title }}</h5>
+                                <p>{{ $edition->price }}€</p>
+                            </div>
+
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </section>
     </section>
 
     <section class="seccion-generos py-4">
@@ -31,6 +56,8 @@
     </section>
 
     <section class="seccion-content">
+
+
         <div class="container">
 
             @include('layouts._partials.messages')
