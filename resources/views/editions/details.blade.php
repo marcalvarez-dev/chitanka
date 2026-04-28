@@ -21,7 +21,9 @@
                         <button class="btn btn-success">Añadir al carrito</button>
                         @auth
                             @if (auth()->user()->role === 'admin')
-                                <button class="btn btn-secondary">Modificar</button>
+                                <a href="{{ route('edition.edit', $edition->id) }}" class="btn btn-secondary">Modificar</a>
+                                <a href="{{ route('edition.create', $edition->id) }}" class="btn btn-secondary">Añadir
+                                    edición </a>
                             @endif
                         @endauth
 

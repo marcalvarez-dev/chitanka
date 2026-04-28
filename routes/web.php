@@ -101,4 +101,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/edition/edit/{edition}', [EditionController::class, 'edit'])->name('edition.edit');
     Route::put('/edition/update/{edition}', [EditionController::class, 'update'])->name('edition.update');
     Route::delete('/edition/delete/{edition}', [EditionController::class, 'destroy'])->name('edition.delete');
+
+    Route::get('/edition/create/book/{book}', [EditionController::class, 'createFromBook'])
+        ->name('edition.create.fromBook');
 });

@@ -90,6 +90,18 @@
                                 </select>
                             </div>
 
+                            <div class="col-12 mb-4">
+                                <label class="form-label">Género:</label>
+                                <select name="category_id" class="form-select">
+                                    @foreach ($genres as $genre)
+                                        <option value="{{ $genre->id }}"
+                                            {{ $edition->category_id == $genre->id ? 'selected' : '' }}>
+                                            {{ $genre->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                             <div class="col-12">
                                 <button type="submit" class="btn btn-warning w-100">
                                     Modificar

@@ -4,7 +4,7 @@
 
             <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('edition.index') }}">
                 <img src="{{ asset('assets/img/logo.PNG') }}" width="80">
-                <span class="fw-bold">Chitanka</span>
+                <span class="fw-bold fs-2">Chitanka</span>
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">

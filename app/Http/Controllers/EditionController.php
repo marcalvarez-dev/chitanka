@@ -68,7 +68,7 @@ class EditionController extends Controller
         $categories = Category::all();
 
 
-        return view('editions.create', compact('books', 'editorials', 'authors', 'categories'));
+        return view('editions.create', compact('books', 'editorials', 'authors', 'categories'))->with('book', null);
     }
 
     /**
@@ -118,9 +118,11 @@ class EditionController extends Controller
         $authors = Author::all();
         $editorials = Editorial::all();
         $books = Book::all();
+        $genres = Category::all();
 
 
-        return view('editions.edit', compact('edition', 'authors', 'books', 'editorials'));
+
+        return view('editions.edit', compact('edition', 'authors', 'books', 'editorials', 'genres'));
     }
 
     /**
@@ -128,8 +130,16 @@ class EditionController extends Controller
      */
     public function update(EditionRequest $request, Edition $edition): RedirectResponse
     {
+        $info = $request->except('category_id');
+        $edition->update($info);
+
+        if ($request->has('category_id')) {
+            $edition->book->category_id = $request->category_id;
+            $edition->book->save();
+        }
+
         //Actualizo la edicion con los datos que vienen de la request
-        $edition->update($request->all());
+        //$edition->update($request->all());
         return redirect()->route('edition.index')->with('succes', 'Libro modificado');
     }
 
@@ -186,5 +196,16 @@ class EditionController extends Controller
         }
 
         return view('welcome', compact('editionsByGenre'));
+    }
+
+    public function createFromBook(Book $book)
+    {
+        $books = Book::all();
+        $editorials = Editorial::all();
+        $authors = Author::all();
+        $categories = Category::all();
+
+
+        return view('editions.create', compact('books', 'editorials', 'authors', 'categories'));
     }
 }

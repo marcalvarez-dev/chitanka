@@ -107,18 +107,24 @@
                         <input type="text" name="author" class="col-12 col-md-10">
                     </div>
 
-                    <div class="row">
-                        <label class="col-12 col-md-12 col-lg-2">Libro existente:</label>
-                        <select name="book_id">
-                            <option value="">-- Crear nuevo libro --</option>
+                    @if (isset($book) && $book)
+                        <input type="text" class="col-12 col-md-10 form-control" value="{{ $book->title }}" disabled>
 
-                            @foreach ($books as $book)
-                                <option value="{{ $book->id }}">
-                                    {{ $book->title }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
+                        <input type="hidden" name="book_id" value="{{ $book->id }}">
+                    @else
+                        <div class="row">
+                            <label class="col-12 col-md-12 col-lg-2">Libro existente:</label>
+                            <select name="book_id">
+                                <option value="">-- Crear nuevo libro --</option>
+
+                                @foreach ($books as $book)
+                                    <option value="{{ $book->id }}">
+                                        {{ $book->title }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    @endif
 
                     <div class="row">
                         <label class="col-12 col-md-12 col-lg-2">Nuevo libro (si no existe):</label>

@@ -36,6 +36,11 @@ a {
 .genero-card {
     background: linear-gradient(90deg, #026818, #034617);
     color: white;
+
+}
+
+.genero-card:hover {
+    background: linear-gradient(90deg, #038c22, #056b2a);
 }
 
 .card {
