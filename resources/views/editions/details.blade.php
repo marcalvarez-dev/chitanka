@@ -6,10 +6,10 @@
     <section>
         <div class="container d-flex justify-content-center">
             <div class="row pt-5">
-                <div class="col-12 col-md-6 col-lg-6">
+                <div class="col-12 col-md-6 col-lg-6 d-flex align-items-center justify-content-center">
                     <div>
                         <img src="{{ $edition->cover ? asset('assets/img/covers/' . $edition->cover) : asset('assets/img/cover.jpg') }}"
-                            class="book-cover" alt="Portada del libro">
+                            class="portada-detalles" alt="Portada del libro">
                     </div>
                 </div>
 
@@ -22,7 +22,7 @@
                         @auth
                             @if (auth()->user()->role === 'admin')
                                 <a href="{{ route('edition.edit', $edition->id) }}" class="btn btn-secondary">Modificar</a>
-                                <a href="{{ route('edition.create', $edition->id) }}" class="btn btn-secondary">Añadir
+                                <a href="{{ route('edition.create.fromBook', $edition->id) }}" class="btn btn-secondary">Añadir
                                     edición </a>
                             @endif
                         @endauth

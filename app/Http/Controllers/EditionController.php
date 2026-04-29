@@ -128,8 +128,6 @@ class EditionController extends Controller
         $books = Book::all();
         $genres = Category::all();
 
-
-
         return view('editions.edit', compact('edition', 'authors', 'books', 'editorials', 'genres'));
     }
 
@@ -180,7 +178,12 @@ class EditionController extends Controller
         // Solo los libros del género seleccionado
         $filteredEditions = $editionsByGenre[$genre] ?? [];
 
-        return view('welcome', compact('editionsByGenre', 'filteredEditions', 'genre'));
+        $latestEditions = Edition::with('book.category')
+            ->latest()   // ordena por created_at DESC
+            ->take(8)    // solo 8 libros
+            ->get();
+
+        return view('welcome', compact('editionsByGenre', 'filteredEditions', 'genre', 'latestEditions'));
     }
 
     public function search(Request $request)
