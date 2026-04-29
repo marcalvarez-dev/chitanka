@@ -30,16 +30,16 @@ class EditionController extends Controller
 
 
         //Todos los generos unicos
-        $genres = Category::pluck('name');
+        $genres = Category::all();
 
-        $editions = Edition::with('book.category')->get();
+        //$editions = Edition::with('book.category')->get();
 
 
         //Array vacio para guardar genero y sus ediciones
-        $editionsByGenre = [];
+        //$editionsByGenre = [];
 
         //Recorro todas las ediciones
-        foreach ($editions as $edition) {
+        /* foreach ($editions as $edition) {
 
             //Saco genero del libro
             $genre = $edition->book->category->name;
@@ -53,9 +53,9 @@ class EditionController extends Controller
             $editionsByGenre[$genre][] = $edition;
         }
 
-
+*/
         //Envio a la vista un mapa de arrays
-        return view('welcome', compact('latestEditions', 'editionsByGenre', 'genres'));
+        return view('welcome', compact('latestEditions', 'genres'))->with('showHero', true);
     }
 
     public function details($id): View
@@ -64,6 +64,7 @@ class EditionController extends Controller
         $edition = Edition::find($id);
         return view('editions.details', compact('edition'));
     }
+
 
 
     /**
@@ -78,7 +79,7 @@ class EditionController extends Controller
         $languages = Language::all();
 
 
-        return view('editions.create', compact('books', 'editorials', 'authors', 'categories', 'languages'))->with('book', null);
+        return view('editions.create', compact('books', 'editorials', 'authors', 'categories', 'languages'))->with('book', null)->with('fromBook', false);
     }
 
     /**
@@ -129,8 +130,10 @@ class EditionController extends Controller
         $editorials = Editorial::all();
         $books = Book::all();
         $genres = Category::all();
+        $languages = Language::all();
 
-        return view('editions.edit', compact('edition', 'authors', 'books', 'editorials', 'genres'));
+
+        return view('editions.edit', compact('edition', 'authors', 'books', 'editorials', 'genres', 'languages'));
     }
 
     /**
@@ -162,12 +165,24 @@ class EditionController extends Controller
 
     public function filterByGenre($genre)
     {
-        $editions = Edition::with('book')->get();
+        $latestEditions = Edition::with('book.category')
+            ->latest()   // ordena por created_at DESC
+            ->take(8)    // solo 8 libros
+            ->get();
+
+        $genres = Category::all();
+        //$editions = Edition::with('book')->get();
 
         // Todos los géneros (igual que index)
-        $editionsByGenre = [];
+        //$editionsByGenre = [];
 
-        foreach ($editions as $edition) {
+        $editions = Edition::with('book.category')->whereHas('book.category', function ($q) use ($genre) {
+            $q->where('name', $genre);
+        })->get();
+
+
+
+        /**foreach ($editions as $edition) {
             $g = $edition->book->category->name;
 
             if (!isset($editionsByGenre[$g])) {
@@ -185,7 +200,8 @@ class EditionController extends Controller
             ->take(8)    // solo 8 libros
             ->get();
 
-        return view('welcome', compact('editionsByGenre', 'filteredEditions', 'genre', 'latestEditions'));
+         **/
+        return view('welcome', compact('editions', 'genre', 'genres', 'latestEditions'))->with('showHero', false);
     }
 
     public function search(Request $request)
@@ -213,12 +229,13 @@ class EditionController extends Controller
 
     public function createFromBook(Book $book)
     {
-        $books = Book::all();
-        $editorials = Editorial::all();
-        $authors = Author::all();
-        $categories = Category::all();
-
-
-        return view('editions.create', compact('books', 'editorials', 'authors', 'categories'));
+        return view('editions.create_from_book', [
+            'book' => $book->load('author'),
+            'editorials' => Editorial::all(),
+            'authors' => Author::all(),
+            'categories' => Category::all(),
+            'languages' => Language::all(),
+            'fromBook' => true
+        ]);
     }
 }

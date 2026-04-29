@@ -26,18 +26,17 @@
 
                             <div class="col-12 col-md-6 mb-3">
                                 <label class="form-label">Idioma:</label>
-                                <select name="language" class="form-select">
-                                    @php
-                                        $languages = ['Español', 'Inglés', 'Francés', 'Alemán'];
-                                    @endphp
-
-                                    @foreach ($languages as $lang)
-                                        <option value="{{ $lang }}"
-                                            {{ $edition->language == $lang ? 'selected' : '' }}>
-                                            {{ $lang }}
+                                <select name="language_id" class="form-select">
+                                    @foreach ($languages as $language)
+                                        <option value="{{ $language->id }}"
+                                            {{ old('language_id', $edition->language_id) == $language->id ? 'selected' : '' }}>
+                                            {{ $language->name }}
                                         </option>
                                     @endforeach
                                 </select>
+                                @error('language_id')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div class="col-12 col-md-6 mb-3">
@@ -91,7 +90,7 @@
                             </div>
 
                             <div class="col-12 mb-4">
-                                <label class="form-label">Género:</label>
+                                <label class="form-label">Género (libro):</label>
                                 <select name="category_id" class="form-select">
                                     @foreach ($genres as $genre)
                                         <option value="{{ $genre->id }}"

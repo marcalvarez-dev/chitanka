@@ -52,8 +52,6 @@
                         </select>
                     </div>
 
-
-
                     <div class="row">
                         <label class="col-12 col-md-12 col-lg-2">Fecha de publicación: </label>
                         <input name="publication_date" type="date"
@@ -119,15 +117,23 @@
 
                     <div class="row">
                         <label class="col-12 col-md-12 col-lg-2">Autor:</label>
-                        <input type="text" name="author" class="col-12 col-md-10">
+                        <div class="col-12 col-md-10">
+                            <input type="text" class="form-control" value="{{ $book->author->name }}" disabled>
+
+                            <input type="hidden" name="author_id" value="{{ $book->author->id }}">
+                        </div>
                     </div>
 
                     <div class="row">
-                        <label class="col-12 col-md-12 col-lg-2">Titulo original</label>
-                        <input name="new_title" type="text" placeholder="Título del libro"
-                            class="col-12 col-md-12 col-lg-10">
+                        <label class="col-12 col-md-12 col-lg-2">Libro:</label>
 
+                        <div class="col-12 col-md-10">
+                            <input type="text" class="form-control" value="{{ $book->title }}" disabled>
+
+                            <input type="hidden" name="book_id" value="{{ $book->id }}">
+                        </div>
                     </div>
+
 
                     <div class="row">
                         <input type="submit" class="btn btn-primary" value="Crear edición" />

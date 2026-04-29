@@ -18,11 +18,18 @@
                         <h2>{{ $edition->title }}</h2>
                         <h5>{{ $edition->book->author->name }}</h5>
                         <h5>{{ $edition->price }}€</h5>
-                        <button class="btn btn-success">Añadir al carrito</button>
+                        <form method="POST" action="{{ route('cart.store') }}">
+                            @csrf
+                            <input type="hidden" name="edition_id" value="{{ $edition->id }}">
+                            <button class="btn btn-primary">
+                                Añadir al carrito
+                            </button>
+                        </form>
                         @auth
                             @if (auth()->user()->role === 'admin')
                                 <a href="{{ route('edition.edit', $edition->id) }}" class="btn btn-secondary">Modificar</a>
-                                <a href="{{ route('edition.create.fromBook', $edition->id) }}" class="btn btn-secondary">Añadir
+                                <a href="{{ route('edition.create.fromBook', $edition->book->id) }}"
+                                    class="btn btn-secondary">Añadir
                                     edición </a>
                             @endif
                         @endauth
@@ -35,6 +42,7 @@
                         <h2>Sinopsis</h2>
                         <p>{{ $edition->synopsis }}</p>
                         <h2>Detalles del prodcuto</h2>
+                        <p><strong>Género: </strong>{{ $edition->book->category->name }}</p>
                         <p><strong>Editorial:</strong> {{ $edition->editorial->name }}</p>
                         <p><strong>Fecha de publicación:
                             </strong>{{ \Carbon\Carbon::parse($edition->publication_date)->format('d/m/Y') }}</p>

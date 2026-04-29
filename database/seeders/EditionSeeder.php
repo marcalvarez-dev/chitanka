@@ -96,6 +96,17 @@ class EditionSeeder extends Seeder
             8 => 'book8.jpg',
             9 => 'book9.jpg',
             10 => 'book10.jpg',
+            11 => 'book11.jpg',
+            12 => 'book12.jpg',
+            13 => 'book13.jpg',
+            14 => 'book14.jpg',
+            15 => 'book15.jpg',
+            16 => 'book16.jpg',
+            17 => 'book17.jpg',
+            18 => 'book18.jpg',
+            19 => 'book19.jpg',
+
+
         ];
 
         foreach ($books as $book) {
