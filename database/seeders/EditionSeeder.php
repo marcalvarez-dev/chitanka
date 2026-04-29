@@ -82,7 +82,8 @@ class EditionSeeder extends Seeder
         $editorials = \App\Models\Editorial::pluck('id')->toArray();
 
         $formats = ['Tapa dura', 'Tapa blanda', 'Ebook'];
-        $languages = ['Español', 'Inglés', 'Alemán', 'Francés'];
+        $languages = \App\Models\Language::pluck('id')->toArray();
+
 
         $covers = [
             1 => 'book1.jpg',
@@ -105,23 +106,14 @@ class EditionSeeder extends Seeder
             \App\Models\Edition::create([
                 'book_id' => $book->id,
                 'editorial_id' => $editorials[array_rand($editorials)],
-
                 'isbn' => fake()->unique()->numerify('#############'),
-
                 'title' => $book->title . ' - Edición 1',
-
-                'language' => $languages[array_rand($languages)],
-
+                'language_id' => $languages[array_rand($languages)],
                 'publication_date' => fake()->date(),
-
                 'price' => rand(10, 35),
-
                 'stock' => rand(0, 50),
-
                 'format' => $formats[array_rand($formats)],
-
                 'synopsis' => fake()->paragraph(3),
-
                 'cover' => $cover,
             ]);
         }

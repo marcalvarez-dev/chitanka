@@ -22,4 +22,9 @@ class Edition extends Model
     {
         return $this->belongsTo(Book::class);
     }
+
+    public function language(): BelongsTo
+    {
+        return $this->belongsTo(Language::class);
+    }
 }

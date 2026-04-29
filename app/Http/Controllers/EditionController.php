@@ -9,6 +9,7 @@ use App\Models\Editorial;
 use App\Models\Author;
 use App\Http\Requests\EditionRequest;
 use App\Models\Category;
+use App\Models\Language;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -74,9 +75,10 @@ class EditionController extends Controller
         $editorials = Editorial::all();
         $authors = Author::all();
         $categories = Category::all();
+        $languages = Language::all();
 
 
-        return view('editions.create', compact('books', 'editorials', 'authors', 'categories'))->with('book', null);
+        return view('editions.create', compact('books', 'editorials', 'authors', 'categories', 'languages'))->with('book', null);
     }
 
     /**

@@ -24,7 +24,7 @@ class EditionRequest extends FormRequest
         return [
             'isbn' => 'required|size:13',
             'title' => 'required|max:50|min:3',
-            'language' => 'required|max:50|min:3',
+            'language_id' => 'required|exists:languages,id',
             'publication_date' => 'required|date',
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',

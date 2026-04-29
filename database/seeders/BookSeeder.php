@@ -35,6 +35,7 @@ class BookSeeder extends Seeder
 
         $authors = \App\Models\Author::all();
         $categories = \App\Models\Category::all();
+        $languages = \App\Models\Language::all();
 
         $books = [
             ['title' => 'Don Quijote de la Mancha', 'genre' => 'Novela'],

@@ -38,7 +38,7 @@
                         <p><strong>Editorial:</strong> {{ $edition->editorial->name }}</p>
                         <p><strong>Fecha de publicación:
                             </strong>{{ \Carbon\Carbon::parse($edition->publication_date)->format('d/m/Y') }}</p>
-                        <p><strong>Idioma:</strong> {{ $edition->language }}</p>
+                        <p><strong>Idioma:</strong> {{ $edition->language->name }}</p>
                         <p><strong>ISBN: </strong>{{ $edition->isbn }}</p>
                     </div>
                 </div>

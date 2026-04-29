@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('isbn', 13)->unique();
             $table->string('title', 100);
-            $table->string('language', 50);
+            //$table->string('language', 50);
             $table->date('publication_date');
             $table->decimal('price', 10, 2);
             $table->integer('stock');
@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('synopsis');
             $table->string('cover')->nullable();
             //Foreign keys
+            $table->unsignedBigInteger('language_id');
             $table->unsignedBigInteger('editorial_id');
             $table->unsignedBigInteger('book_id');
             $table->timestamps();

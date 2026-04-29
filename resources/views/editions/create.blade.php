@@ -29,14 +29,16 @@
 
                     <div class="row">
                         <label class="col-12 col-md-12 col-lg-2">Idioma: </label>
-                        <select name="language" class="col-12 col-md-10">
-                            <option value="Español">Español</option>
-                            <option value="Inglés">Inglés</option>
-                            <option value="Francés">Francés</option>
-                            <option value="Alemán">Alemán</option>
-                        </select> @error('language')
-                            <p style="color: red;">{{ $message }}</p>
-                        @enderror
+                        <select name="language_id" class="col-12 col-md-10">
+                            @foreach ($languages as $language)
+                                <option value="{{ $language->id }}">
+                                    {{ $language->name }}
+                                    @error('language')
+                                        <p style="color: red;">{{ $message }}</p>
+                                    @enderror
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="row">
