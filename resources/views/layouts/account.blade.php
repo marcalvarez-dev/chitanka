@@ -64,6 +64,12 @@
                         <li class="nav-item">
                             <a href="{{ route('edition.create') }}" class="nav-link">Añadir Edición</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('languages.index') }}" class="nav-link">Idiomas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('categories.index') }}" class="nav-link">Categorias</a>
+                        </li>
                     @endif
 
                     <li class="nav-item">

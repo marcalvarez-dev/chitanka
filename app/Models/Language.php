@@ -12,7 +12,7 @@ class Language extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $guarded = [];
 
     public function editions(): HasMany
     {

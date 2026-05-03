@@ -9,8 +9,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CartItemController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EditionController;
 use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 
@@ -104,4 +106,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/edition/create/{book}', [EditionController::class, 'createFromBook'])
         ->name('edition.create.fromBook');
+
+    Route::get('/language/create', [LanguageController::class, 'create'])->name('language.create');
+
+    Route::resource('languages', LanguageController::class);
+
+    Route::resource('categories', CategoryController::class);
 });
