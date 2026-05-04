@@ -114,3 +114,21 @@ label {
 .social-icons {
     list-style: none;
 }
+
+.carousel-indicators [data-bs-target] {
+    background-color: #000;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+    background-color: rgb(34, 139, 34);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(45%) sepia(74%) saturate(470%) hue-rotate(80deg) brightness(85%) contrast(95%);
+}

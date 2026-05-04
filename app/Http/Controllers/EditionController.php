@@ -212,6 +212,14 @@ class EditionController extends Controller
             ->where('title', 'like', '%' . $q . '%')
             ->get();
 
+        $genres = Category::all();
+
+
+        $latestEditions = Edition::with('book.category')
+            ->latest()
+            ->take(8)
+            ->get();
+
         $editionsByGenre = [];
 
         foreach ($editions as $edition) {
@@ -224,7 +232,13 @@ class EditionController extends Controller
             $editionsByGenre[$genre][] = $edition;
         }
 
-        return view('welcome', compact('editionsByGenre'));
+        return view('welcome', [
+            'latestEditions' => $latestEditions,
+            'genres' => $genres,
+            'editions' => $editions,
+            'genre' => null,
+            'showHero' => true
+        ]);
     }
 
     public function createFromBook(Book $book)

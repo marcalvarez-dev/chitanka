@@ -42,11 +42,11 @@
                         <h2>Sinopsis</h2>
                         <p>{{ $edition->synopsis }}</p>
                         <h2>Detalles del prodcuto</h2>
-                        <p><strong>Género: </strong>{{ $edition->book->category->name }}</p>
+                        <p><strong>Género: </strong>{{ optional($edition->book->category)->name ?? 'Sin categoría' }}</p>
                         <p><strong>Editorial:</strong> {{ $edition->editorial->name }}</p>
                         <p><strong>Fecha de publicación:
                             </strong>{{ \Carbon\Carbon::parse($edition->publication_date)->format('d/m/Y') }}</p>
-                        <p><strong>Idioma:</strong> {{ $edition->language->name }}</p>
+                        <p><strong>Idioma:</strong> {{ optional($edition->language)->name ?? 'Sin idioma' }}</p>
                         <p><strong>ISBN: </strong>{{ $edition->isbn }}</p>
                     </div>
                 </div>

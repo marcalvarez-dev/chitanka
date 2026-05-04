@@ -17,41 +17,67 @@
         <section class="container mt-4">
             <h2>Últimas novedades</h2>
 
-            <div class="row">
-                @foreach ($latestEditions as $edition)
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="card">
+            <div id="carouselEditions" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    @foreach ($latestEditions->chunk(4) as $group)
+                        <button type="button" data-bs-target="#carouselEditions" data-bs-slide-to="{{ $loop->index }}"
+                            class="@if ($loop->first) active @endif">
+                        </button>
+                    @endforeach
+                </div>
 
-                            <a href="{{ route('edition.details', $edition->id) }}">
-                                <img class="portada-libro"
-                                    src="{{ $edition->cover ? asset('assets/img/covers/' . $edition->cover) : asset('assets/img/cover.jpg') }}"
-                                    class="card-img-top">
-                            </a>
+                <div class="carousel-inner">
 
-                            <div class="card-body">
-                                <h5>{{ $edition->title }}</h5>
-                                <p>{{ $edition->price }}€</p>
-                                <form method="POST" action="{{ route('cart.store') }}">
-                                    @csrf
-                                    <input type="hidden" name="edition_id" value="{{ $edition->id }}">
-                                    <button class="btn btn-primary w-100">
-                                        Añadir al carrito
-                                    </button>
-                                </form>
-                                @auth
-                                    @if (auth()->user()->role === 'admin')
-                                        <a href="{{ route('edition.edit', $edition->id) }}" class="btn btn-secondary w-100">
-                                            Modificar
-                                        </a>
-                                    @endif
-                                @endauth
+                    @foreach ($latestEditions->chunk(4) as $group)
+                        <div class="carousel-item @if ($loop->first) active @endif">
+
+                            <div class="row">
+
+                                @foreach ($group as $edition)
+                                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                                        <div class="card">
+
+                                            <a href="{{ route('edition.details', $edition->id) }}">
+                                                <img class="portada-libro"
+                                                    src="{{ $edition->cover ? asset('assets/img/covers/' . $edition->cover) : asset('assets/img/cover.jpg') }}">
+                                            </a>
+
+                                            <div class="card-body">
+                                                <h5>{{ $edition->title }}</h5>
+                                                <p>{{ $edition->price }}€</p>
+
+                                                <form method="POST" action="{{ route('cart.store') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="edition_id" value="{{ $edition->id }}">
+                                                    <button class="btn btn-primary w-100">
+                                                        Añadir al carrito
+                                                    </button>
+                                                </form>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                @endforeach
+
                             </div>
 
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselEditions"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselEditions"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+
             </div>
-        </section>
         </section>
     @endif
 
