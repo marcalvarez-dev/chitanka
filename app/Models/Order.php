@@ -21,7 +21,7 @@ class Order extends Model
 
     public function address(): BelongsTo
     {
-        return $this->BelongsTo(Address::class);
+        return $this->belongsTo(Address::class);
     }
 
     public function editions(): BelongsToMany

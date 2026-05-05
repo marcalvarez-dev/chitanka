@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // Controllers
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\EditionController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 
 /* RUTAS PUBLICAS */
@@ -112,4 +114,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('languages', LanguageController::class);
 
     Route::resource('categories', CategoryController::class);
+
+    Route::get('/admin/orders', [AdminController::class, 'index'])->name('admin.orders');
+
+    Route::patch('/admin/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.status');
 });

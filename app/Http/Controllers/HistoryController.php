@@ -11,6 +11,6 @@ class HistoryController extends Controller
         //Obtengo todos los pedidos del usuario logeado con sus prodcutos incluidos, ordenados
         $orders = auth()->user()->orders()->with('editions')->latest()->get();
 
-        return view('account.history.index', compact('orders'));
+        return view('account.orders.index', compact('orders'));
     }
 }

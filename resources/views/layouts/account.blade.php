@@ -51,13 +51,18 @@
                         <a href="{{ route('account.password') }}" class="nav-link">Contraseña</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="{{ route('addresses.index') }}" class="nav-link">Mis direcciones</a>
-                    </li>
+                    @if (auth()->user()->role === 'user')
+                        <li class="nav-item">
+                            <a href="{{ route('addresses.index') }}" class="nav-link">Mis direcciones</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a href="{{ route('history') }}" class="nav-link">Historial de compra</a>
-                    </li>
+                        <li class="nav-item">
+                            <a href="{{ route('history') }}" class="nav-link">Historial de compra</a>
+                        </li>
+                    @endif
+
+
+
 
 
                     @if (auth()->user()->role === 'admin')
@@ -69,6 +74,9 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('categories.index') }}" class="nav-link">Categorias</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.orders') }}" class="nav-link">Administrar pedidos</a>
                         </li>
                     @endif
 

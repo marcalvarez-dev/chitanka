@@ -10,7 +10,17 @@
 
         <div class="border p-3 mb-3">
             <h4>Pedido #{{ $order->id }}</h4>
-            <p>Total: {{ $order->total_price }} €</p>
+            <span
+                class="badge 
+                @if ($order->status == 'pending') bg-warning
+                @elseif($order->status == 'paid') bg-success
+                @elseif($order->status == 'shipped') bg-primary
+                @else bg-danger @endif
+            ">
+                {{ ucfirst($order->status) }}
+            </span>
+
+            <p><strong>Total:</strong> {{ $order->total_price }} €</p>
 
             <hr>
 
