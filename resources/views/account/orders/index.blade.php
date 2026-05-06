@@ -12,9 +12,12 @@
             <h4>Pedido #{{ $order->id }}</h4>
             <span
                 class="badge 
-                @if ($order->status == 'pending') bg-warning
-                @elseif($order->status == 'paid') bg-success
-                @elseif($order->status == 'shipped') bg-primary
+                @if ($order->status == 'pendiente') bg-warning
+                @elseif($order->status == 'pagado') bg-success
+                @elseif($order->status == 'enviado') bg-primary
+                @elseif($order->status == 'cencelado') bg-danger
+                @elseif($order->status == 'entregado') bg-primary
+
                 @else bg-danger @endif
             ">
                 {{ ucfirst($order->status) }}
@@ -28,7 +31,6 @@
                 <p>
                     {{ $edition->title }}
                     (x{{ $edition->pivot->quantity }})
-                    - {{ $edition->pivot->unitary_price }}€
                 </p>
             @endforeach
         </div>
@@ -36,5 +38,7 @@
     @empty
         <p>No tienes pedidos todavía</p>
     @endforelse
+
+    {{ $orders->links() }}
 
 @endsection

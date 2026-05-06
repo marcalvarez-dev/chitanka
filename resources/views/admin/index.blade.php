@@ -3,42 +3,44 @@
 @section('title', 'Administrar pedidos')
 
 @section('content')
+    <form method="GET">
+        <select name="status" class="form-select">
+            <option value="">-- Estado --</option>
+            <option value="pendiente" {{ request('status') == 'pendiente' ? 'selected' : '' }}>En curso</option>
+            <option value="pagado" {{ request('status') == 'pagado' ? 'selected' : '' }}>Pagado</option>
+            <option value="enviado" {{ request('status') == 'enviado' ? 'selected' : '' }}>Enviado</option>
+            <option value="cancelado" {{ request('status') == 'cancelado' ? 'selected' : '' }}>Cancelado</option>
+            <option value="entregado" {{ request('status') == 'entregado' ? 'selected' : '' }}>Entregado</option>
+
+        </select>
+        <input type="date" name="from" value="{{ request('from') }}" class="form-control">
+        <input type="date" name="to" value="{{ request('to') }}" class="form-control">
+
+        <button class="btn btn-primary mt-2 mb-2"> Filtrar
+        </button>
+    </form>
     @foreach ($orders as $order)
-        <div class="card">
-            <div class="card-body">
-                <h5>Pedido #{{ $order->id }}</h5>
+        <a href="{{ route('admin.orders.show', $order) }}">
+            <div class="border rounded p-2 mb-2 small">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        #{{ $order->id }}
+                        — {{ $order->user->name }}
+                        {{ $order->user->last_name }}
+                        — {{ $order->total_price }}€
+                    </div>
 
-                <p><strong>Usuario:</strong> {{ $order->user->name }}</p>
-                <p><strong>Email:</strong> {{ $order->user->email }}</p>
-                <p><strong>Total:</strong> {{ $order->total_price }}€</p>
-                <p><strong>Estado:</strong> {{ $order->status }}</p>
-
-                <h6>Productos:</h6>
-                <ul>
-                    @foreach ($order->editions as $edition)
-                        <li>
-                            {{ $edition->title }}
-                            (x{{ $edition->pivot->quantity }})
-                            - {{ $edition->price }}€
-                        </li>
-                    @endforeach
-                </ul>
+                    <div>
+                        <span class="badge bg-secondary">
+                            {{ $order->status }}
+                        </span>
+                    </div>
+                </div>
+                <div class="text-muted small">
+                    {{ $order->created_at->format('d/m/Y H:i') }}
+                </div>
             </div>
-        </div>
-        <form method="POST" action="{{ route('admin.orders.status', $order) }}">
-            @csrf
-            @method('PATCH')
-
-            <select name="status" class="form-select">
-                <option value="pending" {{ $order->status == 'pending' ? 'selected' : '' }}>Pending</option>
-                <option value="paid" {{ $order->status == 'paid' ? 'selected' : '' }}>Paid</option>
-                <option value="shipped" {{ $order->status == 'shipped' ? 'selected' : '' }}>Shipped</option>
-                <option value="cancelled" {{ $order->status == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
-            </select>
-
-            <button type="submit" class="btn btn-primary">
-                Cambiar estado
-            </button>
-        </form>
+        </a>
     @endforeach
+    {{ $orders->links() }}
 @endsection

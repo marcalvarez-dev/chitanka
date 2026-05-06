@@ -75,6 +75,11 @@ class LanguageController extends Controller
      */
     public function destroy(Language $language): RedirectResponse
     {
+
+        if ($language->editions()->exists()) {
+            return back()->with('danger', 'No puedes borrar un idioma con ediciones asociadas');
+        }
+
         $language->delete();
 
         return redirect()->route('languages.index');

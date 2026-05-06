@@ -75,6 +75,15 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category): RedirectResponse
     {
+
+        $hasEditions = $category->books()
+            ->whereHas('editions')
+            ->exists();
+
+        if ($hasEditions) {
+            return back()->with('danger', 'No puedes borrar esta categoría porque tiene ediciones asociadas');
+        }
+
         $category->delete();
 
         return redirect()->route('categories.index');

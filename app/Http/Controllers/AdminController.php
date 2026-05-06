@@ -11,10 +11,23 @@ class AdminController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        $orders = Order::with(['user', 'address', 'editions'])
-            ->latest()->get();
+        $filter = Order::with(['user', 'address', 'editions']);
+
+        if ($request->filled('status')) {
+            $filter->where('status', $request->status);
+        }
+
+        if ($request->filled('from')) {
+            $filter->whereDate('created_at', '>=', $request->from);
+        }
+
+        if ($request->filled('to')) {
+            $filter->whereDate('created_at', '<=', $request->to);
+        }
+
+        $orders = $filter->latest()->paginate(10);
 
         return view('admin.index', compact('orders'));
     }
@@ -38,9 +51,10 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Order $order)
     {
-        //
+        $order->load(['user', 'address', 'editions']);
+        return view('admin.show', compact('order'));
     }
 
     /**

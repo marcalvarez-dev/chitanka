@@ -13,6 +13,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
 
+    <!-- Boostrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- Boostrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -61,19 +64,15 @@
                         </li>
                     @endif
 
-
-
-
-
                     @if (auth()->user()->role === 'admin')
                         <li class="nav-item">
                             <a href="{{ route('edition.create') }}" class="nav-link">Añadir Edición</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('languages.index') }}" class="nav-link">Idiomas</a>
+                            <a href="{{ route('languages.index') }}" class="nav-link">Administrar idiomas</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('categories.index') }}" class="nav-link">Categorias</a>
+                            <a href="{{ route('categories.index') }}" class="nav-link">Administrar categorias</a>
                         </li>
                         <li>
                             <a href="{{ route('admin.orders') }}" class="nav-link">Administrar pedidos</a>

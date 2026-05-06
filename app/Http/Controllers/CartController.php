@@ -76,7 +76,7 @@ class CartController extends Controller
             $order = Order::create([
                 'user_id' => auth()->id(),
                 'address_id' => $addressId,
-                'status' => 'pending',
+                'status' => 'pendiente',
                 'date' => now(),
                 'total_price' => 0,
             ]);
