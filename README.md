@@ -36,7 +36,6 @@ El objetivo de este proyecto ha sido aplicar los conocimientos adquiridos durant
 
 ### 📚 Catálogo de libros
 
-
 <img width="100%" src="https://github.com/user-attachments/assets/e3b6337c-f546-42d1-b46a-dd70ec88f067" />
 
 ### 📖 Detalle del libro
@@ -51,16 +50,14 @@ El objetivo de este proyecto ha sido aplicar los conocimientos adquiridos durant
 
 <img width="100%" src="https://github.com/user-attachments/assets/28afaf49-3129-4afe-be63-9d847793ca80" />
 
-
-
 ### ⚙️ Panel de administración
 
 <img width="100%" src="https://github.com/user-attachments/assets/79fa3314-27c8-49cf-84ce-5543e0bc1d20" />
 
-### 👤 Perfil de usuario
+### 👤 Correo de confirmación
 
 <img width="100%" src="https://github.com/user-attachments/assets/b39b8d0e-7f53-4035-a1dc-8394ca2f0697" />
 
-### 🔎 Búsqueda de libros
+### 🔎 Gestión de pedidos
 
 <img width="100%" src="https://github.com/user-attachments/assets/8fed9126-cd81-46d4-80a0-ca7dbe62d5b7" />
