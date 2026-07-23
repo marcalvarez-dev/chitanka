@@ -1,5 +1,3 @@
-<img width="1920" height="1080" alt="Screenshot from 2026-07-23 10-51-44" src="https://github.com/user-attachments/assets/afe31e6f-9dab-432a-8ebb-ca7042d90378" /># 📚 Chitanka
-
 Chitanka es una **tienda online de libros** desarrollada con **Laravel**, **PHP**, **Bootstrap** y **MySQL**, diseñada para ofrecer una experiencia de compra intuitiva, moderna y responsive.
 
 La aplicación permite a los usuarios explorar un catálogo de libros, buscar títulos, consultar información detallada, gestionar un carrito de compra y realizar pedidos. Además, incorpora un **panel de administración** desde el que es posible gestionar libros, ediciones, categorías, idiomas y pedidos.
