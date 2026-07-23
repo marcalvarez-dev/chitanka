@@ -1,4 +1,4 @@
-# 📚 Chitanka
+<img width="1920" height="1080" alt="Screenshot from 2026-07-23 10-51-44" src="https://github.com/user-attachments/assets/afe31e6f-9dab-432a-8ebb-ca7042d90378" /># 📚 Chitanka
 
 Chitanka es una **tienda online de libros** desarrollada con **Laravel**, **PHP**, **Bootstrap** y **MySQL**, diseñada para ofrecer una experiencia de compra intuitiva, moderna y responsive.
 
@@ -30,34 +30,30 @@ El objetivo de este proyecto ha sido aplicar los conocimientos adquiridos durant
 
 ## 📸 Capturas
 
-### 🏠 Página principal
+### 🏠 Página de inicio
 
-<img width="100%" src="https://github.com/user-attachments/assets/a459d0fb-4ebc-4f67-8144-0cdbcac0b2eb" />
+<img width="1920" height="1080" alt="Screenshot from 2026-07-23 10-51-29" src="https://github.com/user-attachments/assets/e6448fd3-f2d4-42ee-84f3-eb11a883f74a" />
 
 ### 📚 Catálogo de libros
 
-<img width="100%" src="https://github.com/user-attachments/assets/e3b6337c-f546-42d1-b46a-dd70ec88f067" />
+<img width="1920" height="1080" alt="Screenshot from 2026-07-23 10-51-44" src="https://github.com/user-attachments/assets/d74bd719-eecb-4d73-85a7-a5ac1b2fd888" />
 
-### 📖 Detalle del libro
+### 📖 Detalle de un libro
 
-<img width="100%" src="https://github.com/user-attachments/assets/fa1552c7-05b6-438c-a3fc-616f93d21191" />
+<img width="1920" height="1080" alt="Screenshot from 2026-07-23 10-51-53" src="https://github.com/user-attachments/assets/3fa4bc1c-9628-49e5-bd07-832814dd0599" />
 
 ### 🛒 Carrito de compra
 
-<img width="100%" src="https://github.com/user-attachments/assets/f41a97c4-4f52-4963-b6a8-52cf8d988252" />
+<img width="1920" height="1080" alt="Screenshot from 2026-07-23 10-52-32" src="https://github.com/user-attachments/assets/79f083b8-960d-44ac-b16a-85e97ad4d5db" />
 
-### 📦 Filtrado de libros
+### 📦 Checkout
 
-<img width="100%" src="https://github.com/user-attachments/assets/28afaf49-3129-4afe-be63-9d847793ca80" />
+<img width="1920" height="1080" alt="Screenshot from 2026-07-23 10-52-43" src="https://github.com/user-attachments/assets/e0f6f6f0-be20-4358-8dc2-c2a1696c92f9" />
 
-### ⚙️ Tipo de envío
+### ⚙️ Panel de administración
 
-<img width="100%" src="https://github.com/user-attachments/assets/79fa3314-27c8-49cf-84ce-5543e0bc1d20" />
+<img width="1920" height="1080" alt="Screenshot from 2026-07-23 10-53-54" src="https://github.com/user-attachments/assets/c518bea8-3742-42a9-bfd5-ddcb3b646f32" />
 
-### 👤 Correo de confirmación
+### 📧 Correo de confirmación
 
-<img width="100%" src="https://github.com/user-attachments/assets/b39b8d0e-7f53-4035-a1dc-8394ca2f0697" />
-
-### 🔎 Gestión de pedidos
-
-<img width="100%" src="https://github.com/user-attachments/assets/8fed9126-cd81-46d4-80a0-ca7dbe62d5b7" />
+<img width="1920" height="1080" alt="Screenshot from 2026-07-23 10-55-30" src="https://github.com/user-attachments/assets/0077abc0-ae04-4e6e-be26-0ecc9bb668f4" />
