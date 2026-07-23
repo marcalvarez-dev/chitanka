@@ -30,15 +30,14 @@ El objetivo de este proyecto ha sido aplicar los conocimientos adquiridos durant
 
 ## 📸 Capturas
 
-## 📸 Capturas de pantalla
-
 ### 🏠 Página principal
 
-<img width="100%" src="https://github.com/user-attachments/assets/79fa3314-27c8-49cf-84ce-5543e0bc1d20" />
+<img width="100%" src="https://github.com/user-attachments/assets/a459d0fb-4ebc-4f67-8144-0cdbcac0b2eb" />
 
 ### 📚 Catálogo de libros
 
-<img width="100%" src="https://github.com/user-attachments/assets/f41a97c4-4f52-4963-b6a8-52cf8d988252" />
+
+<img width="100%" src="https://github.com/user-attachments/assets/e3b6337c-f546-42d1-b46a-dd70ec88f067" />
 
 ### 📖 Detalle del libro
 
@@ -50,11 +49,12 @@ El objetivo de este proyecto ha sido aplicar los conocimientos adquiridos durant
 
 ### 📦 Gestión de pedidos
 
-<img width="100%" src="https://github.com/user-attachments/assets/e3b6337c-f546-42d1-b46a-dd70ec88f067" />
+<img width="100%" src="https://github.com/user-attachments/assets/f41a97c4-4f52-4963-b6a8-52cf8d988252" />
+
 
 ### ⚙️ Panel de administración
 
-<img width="100%" src="https://github.com/user-attachments/assets/a459d0fb-4ebc-4f67-8144-0cdbcac0b2eb" />
+<img width="100%" src="https://github.com/user-attachments/assets/79fa3314-27c8-49cf-84ce-5543e0bc1d20" />
 
 ### 👤 Perfil de usuario
 
