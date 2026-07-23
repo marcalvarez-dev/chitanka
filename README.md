@@ -22,7 +22,7 @@ La aplicación permite a los usuarios explorar un catálogo de libros, buscar t�
 ## 🛠️ Tecnologías
 
 <p>
-  <img src="https://skillicons.dev/icons?i=laravel,php,mysql,bootstrap,js,html,css,git,vscode" />
+  <img src="https://skillicons.dev/icons?i=laravel,php,mysql,bootstrap,html,css,git" />
 </p>
 
 ## 🚀 Objetivo
