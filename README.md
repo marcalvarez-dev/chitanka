@@ -1,7 +1,9 @@
 # 📚 Chitanka
 
-> **Proyecto Final del Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Web (DAW).**
-
+![Laravel](https://img.shields.io/badge/Laravel-12-red?style=for-the-badge&logo=laravel)
+![PHP](https://img.shields.io/badge/PHP-8-blue?style=for-the-badge&logo=php)
+![MySQL](https://img.shields.io/badge/MySQL-Database-blue?style=for-the-badge&logo=mysql)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5-purple?style=for-the-badge&logo=bootstrap)
 Chitanka es una **tienda online de libros** desarrollada con **Laravel**, **PHP**, **Bootstrap** y **MySQL**, diseñada para ofrecer una experiencia de compra intuitiva, moderna y responsive.
 
 La aplicación permite a los usuarios explorar un catálogo de libros, buscar títulos, consultar información detallada, gestionar un carrito de compra y realizar pedidos. Además, incorpora un **panel de administración** desde el que es posible gestionar libros, ediciones, categorías, idiomas y pedidos.
