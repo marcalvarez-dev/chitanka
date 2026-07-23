@@ -32,7 +32,3 @@ El objetivo de este proyecto ha sido aplicar los conocimientos adquiridos durant
 ## 📸 Capturas
 
 Próximamente...
-
-## 👨‍💻 Autor
-
-**Marc Álvarez Ruiz**
