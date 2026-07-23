@@ -45,11 +45,12 @@ El objetivo de este proyecto ha sido aplicar los conocimientos adquiridos durant
 
 ### 🛒 Carrito de compra
 
-<img width="100%" src="https://github.com/user-attachments/assets/28afaf49-3129-4afe-be63-9d847793ca80" />
+<img width="100%" src="https://github.com/user-attachments/assets/f41a97c4-4f52-4963-b6a8-52cf8d988252" />
 
 ### 📦 Gestión de pedidos
 
-<img width="100%" src="https://github.com/user-attachments/assets/f41a97c4-4f52-4963-b6a8-52cf8d988252" />
+<img width="100%" src="https://github.com/user-attachments/assets/28afaf49-3129-4afe-be63-9d847793ca80" />
+
 
 
 ### ⚙️ Panel de administración
