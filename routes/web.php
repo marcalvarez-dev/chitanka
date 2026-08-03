@@ -81,7 +81,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/account/password', function () {
         return view('account.change-password');
     })->name('account.password');
-    Route::put('/account/change-password', [PasswordController::class, 'update'])->name('password.update');
+    Route::put('/account/change-password', [PasswordController::class, 'update'])->name('account.password.update');
 
     Route::get('/account/orders', [HistoryController::class, 'index'])->name('history');
 
@@ -92,7 +92,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Checkout
     Route::get('/checkout', [CartController::class, 'checkoutForm'])->name('checkout.form');
-    Route::post('/checkout', [CartController::class, 'checkoutForm'])->name('checkout.form');
+    Route::post('/checkout', [CartController::class, 'checkoutForm'])->name('checkout.review.form');
 });
 
 
