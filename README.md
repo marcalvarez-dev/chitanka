@@ -4,6 +4,10 @@ Chitanka es una **tienda online de libros** desarrollada con **Laravel**, **PHP*
 
 La aplicación permite a los usuarios explorar un catálogo de libros, buscar títulos, consultar información detallada, gestionar un carrito de compra y realizar pedidos. Además, incorpora un **panel de administración** desde el que es posible gestionar libros, ediciones, categorías, idiomas y pedidos.
 
+## 🔗 Demo
+Puedes probar Chitanka aquí:  
+[Chitanka](https://chitanka-production.up.railway.app/)
+
 ## ✨ Características
 
 - 🔐 Autenticación de usuarios.
