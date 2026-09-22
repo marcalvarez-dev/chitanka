@@ -4,6 +4,10 @@ Chitanka es una **tienda online de libros** desarrollada con **Laravel**, **PHP*
 
 La aplicación permite a los usuarios explorar un catálogo de libros, buscar títulos, consultar información detallada, gestionar un carrito de compra y realizar pedidos. Además, incorpora un **panel de administración** desde el que es posible gestionar libros, ediciones, categorías, idiomas y pedidos.
 
+## 🔗 Demo
+Puedes probar Chitanka aquí:  
+[Chitanka](https://chitanka-production.up.railway.app/)
+
 ## ✨ Características
 
 - 🔐 Autenticación de usuarios.
@@ -17,7 +21,6 @@ La aplicación permite a los usuarios explorar un catálogo de libros, buscar t�
 - ⚙️ Panel de administración.
 - 📱 Diseño responsive con Bootstrap 5.
 
-
 ## 🛠️ Tecnologías
 
 <p>
@@ -27,6 +30,60 @@ La aplicación permite a los usuarios explorar un catálogo de libros, buscar t�
 ## 🚀 Objetivo
 
 El objetivo de este proyecto ha sido aplicar los conocimientos adquiridos durante el ciclo formativo desarrollando una aplicación web completa basada en el patrón **MVC**, implementando autenticación, gestión de datos, relaciones entre entidades, operaciones CRUD y una interfaz moderna y responsive.
+
+## ⚙️ Instalación
+
+Clona el repositorio e instala las dependencias:
+
+```bash
+git clone https://github.com/marcalvarez-dev/chitanka
+cd chitanka
+composer install
+npm install
+```
+
+Copia el archivo de entorno y genera la clave de la aplicación:
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+### Variables de entorno
+
+Configura los siguientes valores en el archivo `.env`:
+
+**Base de datos:**
+```
+DB_DATABASE=chitanka
+DB_USERNAME=tu_usuario
+DB_PASSWORD=tu_contraseña
+```
+
+**Correo (necesario para el envío de confirmaciones de pedido):**
+```
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=tu_correo@gmail.com
+MAIL_PASSWORD=tu_contraseña_de_aplicación
+MAIL_ENCRYPTION=tls
+```
+
+> 💡 Si usas Gmail, `MAIL_PASSWORD` no es tu contraseña normal, sino una **contraseña de aplicación**. Puedes generarla desde la configuración de seguridad de tu cuenta de Google (requiere tener la verificación en dos pasos activada).
+
+Ejecuta las migraciones (y opcionalmente los seeders):
+
+```bash
+php artisan migrate --seed
+```
+
+Compila los assets y levanta el servidor:
+
+```bash
+npm run dev
+php artisan serve
+```
 
 ## 📸 Capturas
 
@@ -50,6 +107,9 @@ El objetivo de este proyecto ha sido aplicar los conocimientos adquiridos durant
 
 <img width="1920" height="1080" alt="Screenshot from 2026-07-23 10-52-43" src="https://github.com/user-attachments/assets/e0f6f6f0-be20-4358-8dc2-c2a1696c92f9" />
 
+<details>
+<summary>📷 Ver más capturas (panel de administración y correo de confirmación)</summary>
+
 ### ⚙️ Panel de administración
 
 <img width="1920" height="1080" alt="Screenshot from 2026-07-23 10-53-54" src="https://github.com/user-attachments/assets/c518bea8-3742-42a9-bfd5-ddcb3b646f32" />
@@ -57,3 +117,5 @@ El objetivo de este proyecto ha sido aplicar los conocimientos adquiridos durant
 ### 📧 Correo de confirmación
 
 <img width="1920" height="1080" alt="Screenshot from 2026-07-23 10-55-30" src="https://github.com/user-attachments/assets/0077abc0-ae04-4e6e-be26-0ecc9bb668f4" />
+
+</details>
