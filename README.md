@@ -61,11 +61,12 @@ DB_PASSWORD=tu_contraseña
 ```
 
 **Correo (necesario para el envío de confirmaciones de pedido):
-
+```
 MAIL_MAILER=resend
 RESEND_API_KEY=tu_api_key
 MAIL_FROM_ADDRESS=tu_direccion@tudominio.com
 MAIL_FROM_NAME=Chitanka
+```
 
 💡 Chitanka utiliza Resend para el envío de correos de confirmación de pedido. Para utilizar esta funcionalidad, es necesario disponer de una API key de Resend y de una dirección de remitente perteneciente a un dominio verificado.
 
