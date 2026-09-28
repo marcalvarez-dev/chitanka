@@ -60,17 +60,14 @@ DB_USERNAME=tu_usuario
 DB_PASSWORD=tu_contraseña
 ```
 
-**Correo (necesario para el envío de confirmaciones de pedido):**
-```
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.gmail.com
-MAIL_PORT=587
-MAIL_USERNAME=tu_correo@gmail.com
-MAIL_PASSWORD=tu_contraseña_de_aplicación
-MAIL_ENCRYPTION=tls
-```
+**Correo (necesario para el envío de confirmaciones de pedido):
 
-> 💡 Si usas Gmail, `MAIL_PASSWORD` no es tu contraseña normal, sino una **contraseña de aplicación**. Puedes generarla desde la configuración de seguridad de tu cuenta de Google (requiere tener la verificación en dos pasos activada).
+MAIL_MAILER=resend
+RESEND_API_KEY=tu_api_key
+MAIL_FROM_ADDRESS=tu_direccion@tudominio.com
+MAIL_FROM_NAME=Chitanka
+
+💡 Chitanka utiliza Resend para el envío de correos de confirmación de pedido. Para utilizar esta funcionalidad, es necesario disponer de una API key de Resend y de una dirección de remitente perteneciente a un dominio verificado.
 
 Ejecuta las migraciones (y opcionalmente los seeders):
 
