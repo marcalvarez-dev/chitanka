@@ -60,7 +60,7 @@ DB_USERNAME=tu_usuario
 DB_PASSWORD=tu_contraseña
 ```
 
-**Correo (necesario para el envío de confirmaciones de pedido):
+**Correo (necesario para el envío de confirmaciones de pedido):**
 ```
 MAIL_MAILER=resend
 RESEND_API_KEY=tu_api_key
